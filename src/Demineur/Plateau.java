@@ -1,3 +1,5 @@
+/* TODO Convention du java : les noms de package ne comportent pas de majuscules. */
+/* TODO Que fait cette classe ? */
 package Demineur;
 
 /**
@@ -6,22 +8,21 @@ package Demineur;
  *
  * @author begotw
  */
-public class Plateau
-{
+public class Plateau {
 
     // Définition des types:
+
     /**
      * Définition du type pour la définition du statut de la partie.
      */
-    public enum statutPossibleDePartie
-    {
+    public enum statutPossibleDePartie {
 
         enCours,
         estGagnee,
         estPerdue;
     }
 
-    // Définition des varaibles
+    // Définition des variables
     /**
      * Variable définissant le statut de la partie. Une partie est soit en
      * cours, soit perdu, soit gagné.
