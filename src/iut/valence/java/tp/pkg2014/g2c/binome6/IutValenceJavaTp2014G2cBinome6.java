@@ -1,9 +1,7 @@
+/* TODO Nom de package horrible ! */
 package iut.valence.java.tp.pkg2014.g2c.binome6;
 
-/**
- *
- * @author begotw
- */
+/* TODO Nom de classe horrible ! */
 public class IutValenceJavaTp2014G2cBinome6 {
 
     /**
