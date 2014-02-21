@@ -1,3 +1,5 @@
+/* TODO Convention du java : les noms de package ne comportent pas de majuscules. */
+/* TODO A quoi correspond cette classe par rapport à celle au nom à rallonge. */
 package Demineur;
 
 /**
