@@ -1,18 +1,20 @@
 package demineur;
 
 /**
- * Classe du plateau de jeu. C'est une classe définissant un plateau de jeu
- * composé de cases ainsi que le statut de la partie.
+ * Plateau de jeu.
+ * <p/>
+ * C'est une classe définissant un plateau de jeu composé de cases ainsi que le statut de la partie.
  *
- * @author begotw
+ * @author TODO
+ * @version TODO
  */
 public class Plateau
 {
 
     // Définition des types:
-    /**
-     * Définition du type pour la définition du statut de la partie.
-     */
+
+    /** Définition du type pour la définition du statut de la partie. */
+    /* TODO Public ? */
     public enum statutPossibleDePartie
     {
 
@@ -31,9 +33,12 @@ public class Plateau
     /**
      * Variable définissant le tableau.
      */
+    /* TODO Private ? */
+    /* TODO Convention de Java : minuscule en début d'attribut. */
     Case[][] Plateau;
 
     // Définition du constructeur
+
     /**
      * Constructeur du plateau.
      *
@@ -59,6 +64,7 @@ public class Plateau
                 colonneOuPlacerLaBombe = (int) Math.round(Math.random() * (nombreDeColonnesDuPlateau - 1));
                 ligneOuPlacerLaBombe = (int) Math.round(Math.random() * (nombreDeLignesDuPlateau - 1));
             }
+            /* TODO !Plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].getaUneBombe() */
             while (this.Plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].getaUneBombe() != false);
             this.Plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].setaUneBombe(true);
         }
