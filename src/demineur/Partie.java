@@ -6,5 +6,5 @@ package demineur;
  */
 public class Partie
 {
-
+    /* TODO Vide ? */
 }
