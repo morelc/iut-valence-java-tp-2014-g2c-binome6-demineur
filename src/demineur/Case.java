@@ -1,17 +1,18 @@
 package demineur;
 
 /**
- * C'est une classe définissant les propriétés d'une case lambda.
+ * Propriétés d'une case.
  *
- * @author begotw
+ * @author TODO
+ * @version TODO
  */
 public class Case
 {
 
     // Définition des types:
-    /**
-     * Définition du type pour la définition du statut d'une case.
-     */
+
+    /** Statut d'une case. */
+    /* TODO Private ??? Avec un return et des parametres de ce type dans les méthodes ? */
     private enum statutPossibleDeCase
     {
 
@@ -21,40 +22,32 @@ public class Case
     }
 
     // Définition des varaibles:
+    /** Présence d'une bombe. */
+    private boolean              aUneBombe;
     /**
-     * Variable définissant si la case contient ou non une bombe.
+     * Nombre de bombes adjacents à la case.
+     * <p/>
+     * Ce nombre est compris entre 0 et 8
      */
-    private boolean aUneBombe;
+    private int                  aNBombesAdjacentes;
     /**
-     * Variable définissant le nombre de bombes adjacents à la case. Ce nombre
-     * est compris entre 0 et 8
-     */
-    private int aNBombesAdjacentes;
-    /**
-     * Variable définissant l'état de la case. La case peut etre sous 3 états:
-     * marquee, masquee ou decouvert
+     * Etat de la case.
+     * <p/>
+     * La case peut etre sous 3 états: marquee, masquee ou decouvert
      */
     private statutPossibleDeCase statutCase;
 
     // Définition des varaibles par défaut:
-    /**
-     * Variable définissant la valeur par défaut si la case a une bombe ou non.
-     */
-    private static final boolean AUNEBOMBE_DEFAUT = false;
-    /**
-     * Variable définissant la valeur par défaut du nombre de bombes adjacents
-     * d'une case.
-     */
-    private static final int ANBOMBESADJACENTES_DEFAUT = 0;
-    /**
-     * Variable définissant l'état par défaut d'une case.
-     */
-    private static final statutPossibleDeCase STATUTCASE_DEFAUT = statutPossibleDeCase.masquee;
+    /** Valeur par défaut de la présence d'une bombe. */
+    private static final boolean              AUNEBOMBE_DEFAUT          = false;
+    /** Nombre de bombes adjacents d'une case. */
+    private static final int                  ANBOMBESADJACENTES_DEFAUT = 0;
+    /** Etat par défaut d'une case. */
+    private static final statutPossibleDeCase STATUTCASE_DEFAUT         = statutPossibleDeCase.masquee;
 
     // Définition des constructeurs:
-    /**
-     * Définition du constructeur de base.
-     */
+
+    /** Constructeur de base. */
     public Case() {
         this.aUneBombe = Case.AUNEBOMBE_DEFAUT;
         this.aNBombesAdjacentes = Case.ANBOMBESADJACENTES_DEFAUT;
@@ -62,36 +55,43 @@ public class Case
     }
 
     // Définition des accesseurs
+
     /**
-     * Methode de lecteure du statut de la case.
+     * Lecture du statut de la case.
      *
-     * @return la valeur de StatutCase
+     * @return Valeur de StatutCase
      */
+    /* TODO Franglais ! */
     public statutPossibleDeCase getStatutCase() {
         return statutCase;
     }
 
     /**
-     * Méthode de définition du Statut de la case.
+     * Définition du statut de la case.
      *
-     * @param statutCase la valeur de StatutCase à enregistrer
+     * @param statutCase Valeur de StatutCase à enregistrer
      */
+    /* TODO Franglais ! */
     public void setStatutCase(statutPossibleDeCase statutCase) {
         this.statutCase = statutCase;
     }
 
     /**
-     * Méthode de lecture du contenu de la case: avec ou sans bombe.
+     * Lecture du contenu de la case: avec ou sans bombe.
      *
      * @return La valeur de aUneBombe
      */
+    /* TODO Franglais ! */
     public boolean getaUneBombe() {
         return aUneBombe;
     }
 
     /**
-     * @param aUneBombe La valeur de aUneBombe à enregistrer
+     * Lecture du contenu de la case: avec ou sans bombe.
+     *
+     * @return La valeur de aUneBombe
      */
+    /* TODO Franglais ! */
     public void setaUneBombe(boolean aUneBombe) {
         this.aUneBombe = aUneBombe;
     }
