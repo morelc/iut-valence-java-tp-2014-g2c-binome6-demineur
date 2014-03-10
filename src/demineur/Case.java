@@ -1,25 +1,16 @@
 package demineur;
 
+import demineur.annexes.StatutPossibleDeCase;
+
 /**
  * Propriétés d'une case.
- *
- * @author TODO
- * @version TODO
+ * @author BEGOT William <william.begot@iut-valence.fr>
+ * @version 0.1
  */
 public class Case
 {
 
-    // Définition des types:
-
-    /** Statut d'une case. */
-    /* TODO Private ??? Avec un return et des parametres de ce type dans les méthodes ? */
-    private enum statutPossibleDeCase
-    {
-
-        marquee,
-        masquee,
-        decouvert;
-    }
+  
 
     // Définition des varaibles:
     /** Présence d'une bombe. */
@@ -35,7 +26,7 @@ public class Case
      * <p/>
      * La case peut etre sous 3 états: marquee, masquee ou decouvert
      */
-    private statutPossibleDeCase statutCase;
+    private StatutPossibleDeCase statutCase;
 
     // Définition des varaibles par défaut:
     /** Valeur par défaut de la présence d'une bombe. */
@@ -43,7 +34,7 @@ public class Case
     /** Nombre de bombes adjacents d'une case. */
     private static final int                  ANBOMBESADJACENTES_DEFAUT = 0;
     /** Etat par défaut d'une case. */
-    private static final statutPossibleDeCase STATUTCASE_DEFAUT         = statutPossibleDeCase.masquee;
+    private static final StatutPossibleDeCase STATUTCASE_DEFAUT         = StatutPossibleDeCase.masquee;
 
     // Définition des constructeurs:
 
@@ -54,26 +45,15 @@ public class Case
         this.statutCase = Case.STATUTCASE_DEFAUT;
     }
 
-    // Définition des accesseurs
+    // Définition des getters
 
     /**
      * Lecture du statut de la case.
      *
      * @return Valeur de StatutCase
      */
-    /* TODO Franglais ! */
-    public statutPossibleDeCase getStatutCase() {
+    public StatutPossibleDeCase getStatutCase() {
         return statutCase;
-    }
-
-    /**
-     * Définition du statut de la case.
-     *
-     * @param statutCase Valeur de StatutCase à enregistrer
-     */
-    /* TODO Franglais ! */
-    public void setStatutCase(statutPossibleDeCase statutCase) {
-        this.statutCase = statutCase;
     }
 
     /**
@@ -81,9 +61,27 @@ public class Case
      *
      * @return La valeur de aUneBombe
      */
-    /* TODO Franglais ! */
     public boolean getaUneBombe() {
-        return aUneBombe;
+        return isaUneBombe();
+    }
+    
+        /**
+     * @return the aNBombesAdjacentes
+     */
+    public int getaNBombesAdjacentes() {
+        return aNBombesAdjacentes;
+    }
+    
+    // Définition des setters
+    
+    /**
+     * Définition du statut de la case.
+     *
+     * @param statutCase Valeur de StatutCase à enregistrer
+     */
+    /* TODO Franglais ! */
+    public void setStatutCase(StatutPossibleDeCase statutCase) {
+        this.statutCase = statutCase;
     }
 
     /**
@@ -95,4 +93,20 @@ public class Case
     public void setaUneBombe(boolean aUneBombe) {
         this.aUneBombe = aUneBombe;
     }
+
+    /**
+     * @return the aUneBombe
+     */
+    public boolean isaUneBombe() {
+        return aUneBombe;
+    }
+
+    /**
+     * @param aNBombesAdjacentes the aNBombesAdjacentes to set
+     */
+    public void setaNBombesAdjacentes(int aNBombesAdjacentes) {
+        this.aNBombesAdjacentes = aNBombesAdjacentes;
+    }
+
+
 }

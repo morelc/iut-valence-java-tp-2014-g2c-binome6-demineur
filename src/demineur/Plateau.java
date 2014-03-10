@@ -1,12 +1,11 @@
 package demineur;
 
 /**
- * Plateau de jeu.
- * <p/>
+ * plateau de jeu.
  * C'est une classe définissant un plateau de jeu composé de cases ainsi que le statut de la partie.
- *
- * @author TODO
- * @version TODO
+ 
+ * @author BEGOT William <william.begot@iut-valence.fr>
+ * @version 0.1
  */
 public class Plateau
 {
@@ -33,9 +32,7 @@ public class Plateau
     /**
      * Variable définissant le tableau.
      */
-    /* TODO Private ? */
-    /* TODO Convention de Java : minuscule en début d'attribut. */
-    Case[][] Plateau;
+    Case[][] plateau;
 
     // Définition du constructeur
 
@@ -49,11 +46,11 @@ public class Plateau
      */
     public Plateau(int nombreDeColonnesDuPlateau, int nombreDeLignesDuPlateau, int nombreDeBombesDuPlateau) {
         // Définition des dimensions du tableau
-        this.Plateau = new Case[nombreDeColonnesDuPlateau][nombreDeLignesDuPlateau];
+        this.plateau = new Case[nombreDeColonnesDuPlateau][nombreDeLignesDuPlateau];
         // Initialisation des cases du tableau avec les propriétés: pas de bombe, pas de bombe adjacente et case masquée
         for (int numeroColonne = 0; numeroColonne < nombreDeColonnesDuPlateau; numeroColonne++) {
             for (int numeroLigne = 0; numeroLigne < nombreDeLignesDuPlateau; numeroLigne++) {
-                this.Plateau[numeroColonne][numeroLigne] = new Case();
+                this.plateau[numeroColonne][numeroLigne] = new Case();
             }
         }
         // Positionnement aléatoire des bombes sur le plateau (simple)
@@ -64,13 +61,47 @@ public class Plateau
                 colonneOuPlacerLaBombe = (int) Math.round(Math.random() * (nombreDeColonnesDuPlateau - 1));
                 ligneOuPlacerLaBombe = (int) Math.round(Math.random() * (nombreDeLignesDuPlateau - 1));
             }
-            /* TODO !Plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].getaUneBombe() */
-            while (this.Plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].getaUneBombe() != false);
-            this.Plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].setaUneBombe(true);
+            /* TODO !plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].getaUneBombe() */
+            while (this.plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].getaUneBombe() != false);
+            this.plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].setaUneBombe(true);
         }
         // Calcul des bombes adjacentes aux différentes cases
+        for (int numeroColonneCaseATraiter = 0; numeroColonneCaseATraiter < nombreDeColonnesDuPlateau; numeroColonneCaseATraiter++)
+        {
+            for (int numeroLigneCaseATraiter = 0; numeroLigneCaseATraiter < nombreDeLignesDuPlateau; numeroLigneCaseATraiter++)
+            {
+                if (numeroLigneCaseATraiter != 0 )
+                {
+                    if (numeroColonneCaseATraiter != 0)
+                        if (this.plateau[numeroColonneCaseATraiter-1][numeroLigneCaseATraiter-1].getaUneBombe() == true)
+                            this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].setaNBombesAdjacentes(this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].getaNBombesAdjacentes()+1);
+                    if (this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter-1].getaUneBombe() == true)
+                        this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].setaNBombesAdjacentes(this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].getaNBombesAdjacentes()+1);
+                    if (numeroColonneCaseATraiter != nombreDeColonnesDuPlateau)
+                        if (this.plateau[numeroColonneCaseATraiter+1][numeroLigneCaseATraiter-1].getaUneBombe() == true)
+                            this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].setaNBombesAdjacentes(this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].getaNBombesAdjacentes()+1);               
+                }
+                if (numeroLigneCaseATraiter != nombreDeLignesDuPlateau )
+                {
+                    if (numeroColonneCaseATraiter != 0)
+                        if (this.plateau[numeroColonneCaseATraiter-1][numeroLigneCaseATraiter+1].getaUneBombe() == true)
+                            this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].setaNBombesAdjacentes(this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].getaNBombesAdjacentes()+1);
+                    if (this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter+1].getaUneBombe() == true)
+                        this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].setaNBombesAdjacentes(this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].getaNBombesAdjacentes()+1);
+                    if (numeroColonneCaseATraiter != nombreDeColonnesDuPlateau)
+                        if (this.plateau[numeroColonneCaseATraiter+1][numeroLigneCaseATraiter+1].getaUneBombe() == true)
+                            this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].setaNBombesAdjacentes(this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].getaNBombesAdjacentes()+1);
+                }
+                if (numeroColonneCaseATraiter != 0)
+                    if (this.plateau[numeroColonneCaseATraiter-1][numeroLigneCaseATraiter].getaUneBombe() == true)
+                        this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].setaNBombesAdjacentes(this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].getaNBombesAdjacentes()+1);
+                if (numeroColonneCaseATraiter != nombreDeColonnesDuPlateau)
+                    if (this.plateau[numeroColonneCaseATraiter+1][numeroLigneCaseATraiter].getaUneBombe() == true)
+                        this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].setaNBombesAdjacentes(this.plateau[numeroColonneCaseATraiter][numeroLigneCaseATraiter].getaNBombesAdjacentes()+1);
 
-        //                       ENCORE A FAIRE!
+            }
+        }
+
     }
 
 }
