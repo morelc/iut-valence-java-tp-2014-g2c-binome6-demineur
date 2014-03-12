@@ -4,23 +4,24 @@ import demineur.annexes.StatutPossibleDeCase;
 
 /**
  * Propriétés d'une case.
+ *
  * @author BEGOT William <william.begot@iut-valence.fr>
  * @version 0.1
  */
 public class Case
 {
 
-  
-
     // Définition des varaibles:
-    /** Présence d'une bombe. */
-    private boolean              aUneBombe;
+    /**
+     * Présence d'une bombe.
+     */
+    private boolean aUneBombe;
     /**
      * Nombre de bombes adjacents à la case.
      * <p/>
      * Ce nombre est compris entre 0 et 8
      */
-    private int                  aNBombesAdjacentes;
+    private int aNBombesAdjacentes;
     /**
      * Etat de la case.
      * <p/>
@@ -29,30 +30,38 @@ public class Case
     private StatutPossibleDeCase statutCase;
 
     // Définition des varaibles par défaut:
-    /** Valeur par défaut de la présence d'une bombe. */
-    private static final boolean              AUNEBOMBE_DEFAUT          = false;
-    /** Nombre de bombes adjacents d'une case. */
-    private static final int                  ANBOMBESADJACENTES_DEFAUT = 0;
-    /** Etat par défaut d'une case. */
-    private static final StatutPossibleDeCase STATUTCASE_DEFAUT         = StatutPossibleDeCase.masquee;
+    /**
+     * Valeur par défaut de la présence d'une bombe.
+     */
+    private static final boolean AUNEBOMBE_DEFAUT = false;
+    /**
+     * Nombre de bombes adjacents d'une case.
+     */
+    private static final int ANBOMBESADJACENTES_DEFAUT = 0;
+    /**
+     * Etat par défaut d'une case.
+     */
+    private static final StatutPossibleDeCase STATUTCASE_DEFAUT = StatutPossibleDeCase.masquee;
 
     // Définition des constructeurs:
-
-    /** Constructeur de base. */
-    public Case() {
+    /**
+     * Constructeur de base.
+     */
+    public Case()
+    {
         this.aUneBombe = Case.AUNEBOMBE_DEFAUT;
         this.aNBombesAdjacentes = Case.ANBOMBESADJACENTES_DEFAUT;
         this.statutCase = Case.STATUTCASE_DEFAUT;
     }
 
     // Définition des getters
-
     /**
      * Lecture du statut de la case.
      *
      * @return Valeur de StatutCase
      */
-    public StatutPossibleDeCase getStatutCase() {
+    public StatutPossibleDeCase getStatutCase()
+    {
         return statutCase;
     }
 
@@ -61,26 +70,28 @@ public class Case
      *
      * @return La valeur de aUneBombe
      */
-    public boolean getaUneBombe() {
+    public boolean getaUneBombe()
+    {
         return isaUneBombe();
     }
-    
-        /**
+
+    /**
      * @return the aNBombesAdjacentes
      */
-    public int getaNBombesAdjacentes() {
+    public int getaNBombesAdjacentes()
+    {
         return aNBombesAdjacentes;
     }
-    
+
     // Définition des setters
-    
     /**
      * Définition du statut de la case.
      *
      * @param statutCase Valeur de StatutCase à enregistrer
      */
     /* TODO Franglais ! */
-    public void setStatutCase(StatutPossibleDeCase statutCase) {
+    public void setStatutCase(StatutPossibleDeCase statutCase)
+    {
         this.statutCase = statutCase;
     }
 
@@ -90,23 +101,25 @@ public class Case
      * @return La valeur de aUneBombe
      */
     /* TODO Franglais ! */
-    public void setaUneBombe(boolean aUneBombe) {
+    public void setaUneBombe(boolean aUneBombe)
+    {
         this.aUneBombe = aUneBombe;
     }
 
     /**
      * @return the aUneBombe
      */
-    public boolean isaUneBombe() {
+    public boolean isaUneBombe()
+    {
         return aUneBombe;
     }
 
     /**
      * @param aNBombesAdjacentes the aNBombesAdjacentes to set
      */
-    public void setaNBombesAdjacentes(int aNBombesAdjacentes) {
+    public void setaNBombesAdjacentes(int aNBombesAdjacentes)
+    {
         this.aNBombesAdjacentes = aNBombesAdjacentes;
     }
-
 
 }
