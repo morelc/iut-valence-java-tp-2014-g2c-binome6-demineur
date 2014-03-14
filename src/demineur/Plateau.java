@@ -26,6 +26,8 @@ public class Plateau
     Case[][] plateau;
 
     // Définition du constructeur
+    /* TODO C'est très difficilement lisible ! Réduisez la taille des noms de variable !
+     * Certaines de vos lignes ont plus de 200 caractères de large ! */
     /**
      * Constructeur du plateau.
      *
