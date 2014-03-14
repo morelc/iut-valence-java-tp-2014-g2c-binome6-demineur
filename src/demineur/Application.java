@@ -1,6 +1,8 @@
+/* TODO Changer le nom du package. */
 package demineur;
 
 /**
+ * TODO
  *
  * @author BEGOT William <william.begot@iut-valence.fr>
  * @version 0.1
