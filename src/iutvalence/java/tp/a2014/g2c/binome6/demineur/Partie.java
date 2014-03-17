@@ -1,4 +1,4 @@
-package demineur;
+package iutvalence.java.tp.a2014.g2c.binome6.demineur;
 
 /**
  * Classe de définition d'un plateau.
@@ -9,4 +9,5 @@ package demineur;
 public class Partie
 {
     /* TODO Vide ? */
+    /* Oui... enfin pour l'instant! */
 }

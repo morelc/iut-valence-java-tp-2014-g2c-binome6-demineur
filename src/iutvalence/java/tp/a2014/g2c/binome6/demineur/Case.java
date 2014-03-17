@@ -1,0 +1,148 @@
+/* TODO Franglais ! */
+package iutvalence.java.tp.a2014.g2c.binome6.demineur;
+
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutDeLaCase;
+import static iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutDeLaCase.*;
+
+/**
+ * Propriétés d'une case.
+ *
+ * @author BEGOT William <william.begot@iut-valence.fr>
+ * @version 0.1
+ */
+public class Case
+{
+
+    // Définition des varaibles:
+    /**
+     * Présence d'une bombe.
+     */
+    private boolean aUneBombe;
+    /**
+     * Nombre de bombes adjacents à la case.
+     * <p/>
+     * Ce nombre est compris entre 0 et 8
+     */
+    private int aNBombesAdjacentes;
+    /**
+     * Etat de la case.
+     * <p/>
+     * La case peut etre sous 3 états: Marquee, Masquee ou Decouvert
+     */
+    private StatutDeLaCase statutCase;
+
+    /* TODO Est-ce réellement de passer par des constantes ici ? */
+    /* REPONSE: Ben... Oui! c'est mr Jean qui nous a dit que c'était préférable
+     pour si l'on avait besoin de valeurs par défaut dans le constructeur!  */
+    // Définition des varaibles par défaut:
+    /**
+     * Valeur par défaut de la présence d'une bombe.
+     */
+    private static final boolean AUNEBOMBE_DEFAUT = false;
+    /**
+     * Nombre de bombes adjacents d'une case.
+     */
+    private static final int ANBOMBESADJACENTES_DEFAUT = 0;
+    /**
+     * Etat par défaut d'une case.
+     */
+    private static final StatutDeLaCase STATUTCASE_DEFAUT = StatutDeLaCase.Masquee;
+
+    // Définition des constructeurs:
+    /**
+     * Constructeur de base.
+     */
+    public Case() {
+        this.aUneBombe = Case.AUNEBOMBE_DEFAUT;
+        this.aNBombesAdjacentes = Case.ANBOMBESADJACENTES_DEFAUT;
+        this.statutCase = Case.STATUTCASE_DEFAUT;
+    }
+
+    // Définition des getters:
+    /**
+     * Obtenir le statut de la case en cours.
+     *
+     * @return statut de la case en cours (marquée, masquée ou à découvert)
+     */
+    public StatutDeLaCase getStatutCase() {
+        return statutCase;
+    }
+
+    /**
+     * Obtenir le statut de la bombe de la case en cours.
+     *
+     * @return statut de la bopbe (true <=> a une bombe / false <=> n'a pas de
+     * bombe)
+     */
+    public boolean getaUneBombe() {
+        return this.aUneBombe;
+    }
+
+    /**
+     * Obtenir le nombre de bombes adjacentes à la case en cours.
+     *
+     * @return nombre de bombes adjacentes [0..8]
+     */
+    public int getaNBombesAdjacentes() {
+        return aNBombesAdjacentes;
+    }
+
+    // Défintion des setters:
+    /**
+     * Modifier le statut de la case en cours de traitement.
+     *
+     * @param statutCase le nouveau statut de la case [Marquee, Masquee,
+     * Decouvert]
+     */
+    public void setStatutCase(StatutDeLaCase statutCase) {
+        this.statutCase = statutCase;
+    }
+
+    /**
+     * Modifier le statut de la bombe dans la case en cours de traitement.
+     *
+     * @param aUneBombe le nouveau statut de la bombe [true, false]
+     */
+    public void setaUneBombe(boolean aUneBombe) {
+        this.aUneBombe = aUneBombe;
+    }
+
+    /**
+     * Modifier le nombre de bombes adjacentes à la case en cours de traitement.
+     *
+     * @param aNBombesAdjacentes le nouveau nombre de bombes adjacentes [0..8]
+     */
+    public void setaNBombesAdjacentes(int aNBombesAdjacentes) {
+        this.aNBombesAdjacentes = aNBombesAdjacentes;
+    }
+
+    // Définition des méthodes objet:
+    /**
+     * Méthode toString. Permet d'afficher un aperçu visuel de la case en
+     * ascii-art: -> avec un # si la case est masquée -> avec un M si la case
+     * est marquée -> avec un nombre la case est découverte et sans bombe ->
+     * avec un X si la case est découverte et a une bombe (ce cas ne se produit
+     * qu'à la fin de la partie)
+     *
+     * @return aspect visuel de la case en ascii-art
+     */
+    public String toString() {
+        if (this.statutCase == Masquee) {
+            return "#";
+        }
+        if (this.statutCase == Marquee) {
+            return "M";
+        }
+        if (this.statutCase == Decouvert) {
+            if (this.aUneBombe == false) {
+                return Integer.toString(this.aNBombesAdjacentes);
+            }
+            else {
+                return "X";
+            }
+        }
+        return "Erreur";
+
+    }
+
+}
