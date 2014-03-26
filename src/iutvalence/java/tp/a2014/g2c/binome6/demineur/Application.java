@@ -1,12 +1,13 @@
 package iutvalence.java.tp.a2014.g2c.binome6.demineur;
 
-import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutDeLaCase;
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase;
 import java.util.Scanner;
 
 /**
  * TODO
  *
  * @author BEGOT William <william.begot@iut-valence.fr>
+ * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 0.1
  */
 public class Application
@@ -18,6 +19,7 @@ public class Application
     public static void main(String[] args) {
         // Commandes de test
         Plateau monplateau = new Plateau(10, 10, 10);
+        System.out.print(monplateau.plateau.toString());
         Scanner scanner = new Scanner(System.in);
         int LigneCaseAAfficher = 0;
         int ColonneCaseAAfficher = 0;
@@ -32,7 +34,7 @@ public class Application
             LigneCaseAAfficher = scanner.nextInt();
             System.out.println("Veuillez entrer la colonne de la case à afficher: ");
             ColonneCaseAAfficher = scanner.nextInt();
-            monplateau.plateau[ColonneCaseAAfficher][LigneCaseAAfficher].setStatutCase(StatutDeLaCase.Decouvert);
+            monplateau.plateau[ColonneCaseAAfficher][LigneCaseAAfficher].setStatutCase(StatutCase.DECOUVERTE);
         }
 
     }

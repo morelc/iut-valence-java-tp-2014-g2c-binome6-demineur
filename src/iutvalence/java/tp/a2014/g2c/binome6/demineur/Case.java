@@ -1,13 +1,13 @@
-/* TODO Franglais ! */
 package iutvalence.java.tp.a2014.g2c.binome6.demineur;
 
-import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutDeLaCase;
-import static iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutDeLaCase.*;
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase;
+import static iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase.*;
 
 /**
  * Propriétés d'une case.
  *
  * @author BEGOT William <william.begot@iut-valence.fr>
+ * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 0.1
  */
 public class Case
@@ -27,9 +27,9 @@ public class Case
     /**
      * Etat de la case.
      * <p/>
-     * La case peut etre sous 3 états: Marquee, Masquee ou Decouvert
+ La case peut etre sous 3 états: MARQUEE, MASQUEE ou DECOUVERTE
      */
-    private StatutDeLaCase statutCase;
+    private StatutCase statutCase;
 
     /* TODO Est-ce réellement de passer par des constantes ici ? */
     /* REPONSE: Ben... Oui! c'est mr Jean qui nous a dit que c'était préférable
@@ -46,7 +46,7 @@ public class Case
     /**
      * Etat par défaut d'une case.
      */
-    private static final StatutDeLaCase STATUTCASE_DEFAUT = StatutDeLaCase.Masquee;
+    private static final StatutCase STATUTCASE_DEFAUT = StatutCase.MASQUEE;
 
     // Définition des constructeurs:
     /**
@@ -64,7 +64,7 @@ public class Case
      *
      * @return statut de la case en cours (marquée, masquée ou à découvert)
      */
-    public StatutDeLaCase getStatutCase() {
+    public StatutCase getStatutCase() {
         return statutCase;
     }
 
@@ -91,10 +91,10 @@ public class Case
     /**
      * Modifier le statut de la case en cours de traitement.
      *
-     * @param statutCase le nouveau statut de la case [Marquee, Masquee,
-     * Decouvert]
+     * @param statutCase le nouveau statut de la case [MARQUEE, MASQUEE,
+ DECOUVERTE]
      */
-    public void setStatutCase(StatutDeLaCase statutCase) {
+    public void setStatutCase(StatutCase statutCase) {
         this.statutCase = statutCase;
     }
 
@@ -127,13 +127,13 @@ public class Case
      * @return aspect visuel de la case en ascii-art
      */
     public String toString() {
-        if (this.statutCase == Masquee) {
+        if (this.statutCase == MASQUEE) {
             return "#";
         }
-        if (this.statutCase == Marquee) {
+        if (this.statutCase == MARQUEE) {
             return "M";
         }
-        if (this.statutCase == Decouvert) {
+        if (this.statutCase == DECOUVERTE) {
             if (this.aUneBombe == false) {
                 return Integer.toString(this.aNBombesAdjacentes);
             }
