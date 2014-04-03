@@ -27,7 +27,7 @@ public class Case
     /**
      * Etat de la case.
      * <p/>
- La case peut etre sous 3 états: MARQUEE, MASQUEE ou DECOUVERTE
+     * La case peut etre sous 3 états: MARQUEE, MASQUEE ou DECOUVERTE
      */
     private StatutCase statutCase;
 
@@ -92,7 +92,7 @@ public class Case
      * Modifier le statut de la case en cours de traitement.
      *
      * @param statutCase le nouveau statut de la case [MARQUEE, MASQUEE,
- DECOUVERTE]
+     * DECOUVERTE]
      */
     public void setStatutCase(StatutCase statutCase) {
         this.statutCase = statutCase;
@@ -116,6 +116,15 @@ public class Case
         this.aNBombesAdjacentes = aNBombesAdjacentes;
     }
 
+    // Définition des méthodes divers
+    /**
+     * Incrémenter le nombre de bombes adjacentes à la case en cours de
+     * traitement.
+     */
+    public void incrementerNBombesAdjacentes() {
+        this.aNBombesAdjacentes++;
+    }
+
     // Définition des méthodes objet:
     /**
      * Méthode toString. Permet d'afficher un aperçu visuel de la case en
@@ -126,6 +135,7 @@ public class Case
      *
      * @return aspect visuel de la case en ascii-art
      */
+    @Override
     public String toString() {
         if (this.statutCase == MASQUEE) {
             return "#";

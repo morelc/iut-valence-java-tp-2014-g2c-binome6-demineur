@@ -1,8 +1,5 @@
 package iutvalence.java.tp.a2014.g2c.binome6.demineur;
 
-import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase;
-import java.util.Scanner;
-
 /**
  * TODO
  *
@@ -19,22 +16,14 @@ public class Application
     public static void main(String[] args) {
         // Commandes de test
         Plateau monplateau = new Plateau(10, 10, 10);
-        System.out.print(monplateau.plateau.toString());
-        Scanner scanner = new Scanner(System.in);
-        int LigneCaseAAfficher = 0;
-        int ColonneCaseAAfficher = 0;
-        while (LigneCaseAAfficher != 100) {
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    System.out.print(" " + monplateau.plateau[i][j].toString());
-                }
-                System.out.println();
-            }
-            System.out.println("Veuillez entrer la ligne de la case à afficher: ");
-            LigneCaseAAfficher = scanner.nextInt();
-            System.out.println("Veuillez entrer la colonne de la case à afficher: ");
-            ColonneCaseAAfficher = scanner.nextInt();
-            monplateau.plateau[ColonneCaseAAfficher][LigneCaseAAfficher].setStatutCase(StatutCase.DECOUVERTE);
+        Joueur monJoueur = new Joueur();
+        int nbCoupsAJouer = 1000;
+
+        while (nbCoupsAJouer == 1000) {
+            System.out.println(monplateau.toString());
+            monJoueur.entrerCoordonneesCase();
+            monJoueur.affihcerCase(monplateau);
+
         }
 
     }

@@ -24,22 +24,22 @@ public class Plateau
      * Variable définissant le tableau.
      */
     Case[][] plateau;
-    
+
     /**
      * Variable définissant le nombre de bombes dans le plateau.
      */
     private final int nombreBombesPlateau;
-    
+
     /**
      * Variable définissant le nombre de colonnes du plateau.
      */
     private final int nombreColonnesPlateau;
-    
+
     /**
      * Variable définissant le nombre de lignes du plateau.
      */
     private final int nombreLignesPlateau;
-    
+
     // Définition du constructeur
     /* TODO Toujours aussi peu lisible!!! */
     /**
@@ -53,16 +53,15 @@ public class Plateau
     public Plateau(int nombreDeColonnesDuPlateau, int nombreDeLignesDuPlateau, int nombreDeBombesDuPlateau) {
 
         // Définition des variables du plateau
- this.nombreBombesPlateau = nombreDeBombesDuPlateau;
- this.nombreColonnesPlateau = nombreDeColonnesDuPlateau;
- this.nombreLignesPlateau = nombreDeLignesDuPlateau;
- 
-// Définition des dimensions du tableau
+        this.nombreBombesPlateau = nombreDeBombesDuPlateau;
+        this.nombreColonnesPlateau = nombreDeColonnesDuPlateau;
+        this.nombreLignesPlateau = nombreDeLignesDuPlateau;
 
-        this.plateau = new Case[ this.nombreColonnesPlateau][this.nombreLignesPlateau];
-        
+// Définition des dimensions du tableau
+        this.plateau = new Case[this.nombreColonnesPlateau][this.nombreLignesPlateau];
+
 // Initialisation des cases du tableau avec les propriétés: pas de bombe, pas de bombe adjacente et case masquée
-        for (int numeroColonne = 0; numeroColonne <  this.nombreColonnesPlateau; numeroColonne++) {
+        for (int numeroColonne = 0; numeroColonne < this.nombreColonnesPlateau; numeroColonne++) {
             for (int numeroLigne = 0; numeroLigne < this.nombreLignesPlateau; numeroLigne++) {
                 this.plateau[numeroColonne][numeroLigne] = new Case();
             }
@@ -70,20 +69,18 @@ public class Plateau
 
         // Placement des mines dans le plateau (méthode simple)
         PlacerLesBombesSurLePlateau();
-        
+
         // Calcul des bombes adjacentes aux différentes cases
         CalculDesBombesAdjacentes();
 
     }
 
-    
-    
     // Méthodes d'initialisation du plateau:
-    
     /**
-     * Méthode d'initialisation: positionnement des bombes sur le plateau (méthode simple).
+     * Méthode d'initialisation: positionnement des bombes sur le plateau
+     * (méthode simple).
      */
-    private void PlacerLesBombesSurLePlateau(){
+    private void PlacerLesBombesSurLePlateau() {
         int colonneOuPlacerLaBombe = 0;
         int ligneOuPlacerLaBombe = 0;
         for (int nombreDeBombesRestantAPlacer = this.nombreBombesPlateau; nombreDeBombesRestantAPlacer != 0; nombreDeBombesRestantAPlacer--) {
@@ -97,89 +94,102 @@ public class Plateau
             this.plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].setaUneBombe(true);
         }
     }
-    
+
     /**
-     * Méthode d'initialisation: calcul des bombes adjacentes à chaque cases (méthode simple).
+     * Méthode d'initialisation: calcul des bombes adjacentes à chaque cases
+     * (méthode simple).
      */
-    private void CalculDesBombesAdjacentes (){
-        
-        /* TODO A discuter en TP. */
-                for (int numColCaseATraiter = 0; numColCaseATraiter < this.nombreColonnesPlateau; numColCaseATraiter++) {
+    private void CalculDesBombesAdjacentes() {
+
+        for (int numColCaseATraiter = 0; numColCaseATraiter < this.nombreColonnesPlateau; numColCaseATraiter++) {
             for (int numLigCaseATraiter = 0; numLigCaseATraiter < this.nombreLignesPlateau; numLigCaseATraiter++) {
+                Case caseCourante = this.plateau[numColCaseATraiter][numLigCaseATraiter];
                 if (numLigCaseATraiter != 0) {
                     if (numColCaseATraiter != 0) {
-                        if (this.plateau[numColCaseATraiter - 1][numLigCaseATraiter - 1].getaUneBombe() == true) {
-                            this.plateau[numColCaseATraiter][numLigCaseATraiter].setaNBombesAdjacentes(this.plateau[numColCaseATraiter][numLigCaseATraiter].getaNBombesAdjacentes() + 1);
+                        if (this.plateau[numColCaseATraiter - 1][numLigCaseATraiter - 1].getaUneBombe()) {
+                            caseCourante.incrementerNBombesAdjacentes();
                         }
                     }
-                    if (this.plateau[numColCaseATraiter][numLigCaseATraiter - 1].getaUneBombe() == true) {
-                        this.plateau[numColCaseATraiter][numLigCaseATraiter].setaNBombesAdjacentes(this.plateau[numColCaseATraiter][numLigCaseATraiter].getaNBombesAdjacentes() + 1);
+                    if (this.plateau[numColCaseATraiter][numLigCaseATraiter - 1].getaUneBombe()) {
+                        caseCourante.incrementerNBombesAdjacentes();
                     }
                     if (numColCaseATraiter != this.nombreColonnesPlateau - 1) {
-                        if (this.plateau[numColCaseATraiter + 1][numLigCaseATraiter - 1].getaUneBombe() == true) {
-                            this.plateau[numColCaseATraiter][numLigCaseATraiter].setaNBombesAdjacentes(this.plateau[numColCaseATraiter][numLigCaseATraiter].getaNBombesAdjacentes() + 1);
+                        if (this.plateau[numColCaseATraiter + 1][numLigCaseATraiter - 1].getaUneBombe()) {
+                            caseCourante.incrementerNBombesAdjacentes();
                         }
                     }
                 }
                 if (numLigCaseATraiter != this.nombreLignesPlateau - 1) {
                     if (numColCaseATraiter != 0) {
-                        if (this.plateau[numColCaseATraiter - 1][numLigCaseATraiter + 1].getaUneBombe() == true) {
-                            this.plateau[numColCaseATraiter][numLigCaseATraiter].setaNBombesAdjacentes(this.plateau[numColCaseATraiter][numLigCaseATraiter].getaNBombesAdjacentes() + 1);
+                        if (this.plateau[numColCaseATraiter - 1][numLigCaseATraiter + 1].getaUneBombe()) {
+                            caseCourante.incrementerNBombesAdjacentes();
                         }
                     }
-                    if (this.plateau[numColCaseATraiter][numLigCaseATraiter + 1].getaUneBombe() == true) {
-                        this.plateau[numColCaseATraiter][numLigCaseATraiter].setaNBombesAdjacentes(this.plateau[numColCaseATraiter][numLigCaseATraiter].getaNBombesAdjacentes() + 1);
+                    if (this.plateau[numColCaseATraiter][numLigCaseATraiter + 1].getaUneBombe()) {
+                        caseCourante.incrementerNBombesAdjacentes();
                     }
                     if (numColCaseATraiter != this.nombreColonnesPlateau - 1) {
-                        if (this.plateau[numColCaseATraiter + 1][numLigCaseATraiter + 1].getaUneBombe() == true) {
-                            this.plateau[numColCaseATraiter][numLigCaseATraiter].setaNBombesAdjacentes(this.plateau[numColCaseATraiter][numLigCaseATraiter].getaNBombesAdjacentes() + 1);
+                        if (this.plateau[numColCaseATraiter + 1][numLigCaseATraiter + 1].getaUneBombe()) {
+                            caseCourante.incrementerNBombesAdjacentes();
                         }
                     }
                 }
                 if (numColCaseATraiter != 0) {
-                    if (this.plateau[numColCaseATraiter - 1][numLigCaseATraiter].getaUneBombe() == true) {
-                        this.plateau[numColCaseATraiter][numLigCaseATraiter].setaNBombesAdjacentes(this.plateau[numColCaseATraiter][numLigCaseATraiter].getaNBombesAdjacentes() + 1);
+                    if (this.plateau[numColCaseATraiter - 1][numLigCaseATraiter].getaUneBombe()) {
+                        caseCourante.incrementerNBombesAdjacentes();
                     }
                 }
                 if (numColCaseATraiter != this.nombreColonnesPlateau - 1) {
-                    if (this.plateau[numColCaseATraiter + 1][numLigCaseATraiter].getaUneBombe() == true) {
-                        this.plateau[numColCaseATraiter][numLigCaseATraiter].setaNBombesAdjacentes(this.plateau[numColCaseATraiter][numLigCaseATraiter].getaNBombesAdjacentes() + 1);
+                    if (this.plateau[numColCaseATraiter + 1][numLigCaseATraiter].getaUneBombe()) {
+                        caseCourante.incrementerNBombesAdjacentes();
                     }
                 }
 
             }
         }
     }
-    
-    
+
     // Méthodes génériques:
-    
     /**
-     * Méthode toString.
-     * Permet l'affichage en ascii-art du plateau
-     * Attention: cette méthode ne peut afficher un plateau de dimensions supereurs à 100*100
+     * Méthode toString. Permet l'affichage en ascii-art du plateau Attention:
+     * cette méthode ne peut afficher un plateau de dimensions supereurs à
+     * 100*100
+     *
      * @return aspect visuel du plateau en Ascii-art
      */
     @Override
-    public String toString(){
+    public String toString() {
         String plateauEnAsciiArt = "   ";
         int numeroLigneAAfficher = 0;
         // Génération de la première ligne (dizaines des colonnes)
-        for (int parcoursDesLignes = 0; parcoursDesLignes < this.nombreLignesPlateau; parcoursDesLignes ++){
-            plateauEnAsciiArt += parcoursDesLignes;
+        for (int parcoursDesColonnes = 0; parcoursDesColonnes < this.nombreColonnesPlateau; parcoursDesColonnes++) {
+            plateauEnAsciiArt += Math.round(parcoursDesColonnes / 10);
+            plateauEnAsciiArt += " ";
         }
         plateauEnAsciiArt += "\n   ";
-        
+
         // Génération de la seconde ligne (unités des colonnes)
-        for (int parcoursDesLignes = 0; parcoursDesLignes < this.nombreLignesPlateau; parcoursDesLignes ++){
-            plateauEnAsciiArt += parcoursDesLignes%10;
+        for (int parcoursDesLignes = 0; parcoursDesLignes < this.nombreColonnesPlateau; parcoursDesLignes++) {
+            plateauEnAsciiArt += parcoursDesLignes % 10;
+            plateauEnAsciiArt += " ";
         }
         plateauEnAsciiArt += "\n";
-        
+
         // Génération des lignes suivantes (dizaines et unités des lignes, suivi de la ligne de démineur)
-        
-            // A FINIR!
-        
+        for (int parcoursDesLignes = 0; parcoursDesLignes < this.nombreLignesPlateau; parcoursDesLignes++) {
+            if (parcoursDesLignes < 10) // traitement du cas où le numéro de la ligne à afficher est inférieur à 10: on ajoute un 0 afin de conserver l'alignement des dizaines
+            {
+                plateauEnAsciiArt += "0";
+            }
+            plateauEnAsciiArt += parcoursDesLignes;
+            plateauEnAsciiArt += " ";
+            for (int numeroCaseDeLaLigne = 0; numeroCaseDeLaLigne < this.nombreColonnesPlateau; numeroCaseDeLaLigne++) {
+                plateauEnAsciiArt += this.plateau[numeroCaseDeLaLigne][parcoursDesLignes].toString();
+                plateauEnAsciiArt += " ";
+            }
+            plateauEnAsciiArt += "\n";
+        }
+
         return plateauEnAsciiArt;
     }
 }
