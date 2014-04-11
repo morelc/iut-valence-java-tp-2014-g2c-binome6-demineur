@@ -1,5 +1,7 @@
 package iutvalence.java.tp.a2014.g2c.binome6.demineur;
 
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutPartie;
+
 /**
  * TODO
  *
@@ -7,8 +9,7 @@ package iutvalence.java.tp.a2014.g2c.binome6.demineur;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 0.1
  */
-public class Application
-{
+public class Application {
 
     /**
      * @param args the command line arguments
@@ -16,16 +17,12 @@ public class Application
     public static void main(String[] args) {
         // Commandes de test
         Plateau monplateau = new Plateau(10, 10, 10);
-        Joueur monJoueur = new Joueur();
-        int nbCoupsAJouer = 1000;
-
-        while (nbCoupsAJouer == 1000) {
-            System.out.println(monplateau.toString());
-            monJoueur.entrerCoordonneesCase();
-            monJoueur.affihcerCase(monplateau);
-
+        IHM_Joueur_ASCII monJoueur = new IHM_Joueur_ASCII();
+        
+        while (monplateau.getStatutPartie() != StatutPartie.ESTPERDUE) {
+            monJoueur.interactionJoueur(monplateau);
         }
-
+        
     }
-
+    
 }

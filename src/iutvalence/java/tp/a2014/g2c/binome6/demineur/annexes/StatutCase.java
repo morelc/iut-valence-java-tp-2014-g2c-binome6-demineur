@@ -7,8 +7,7 @@ package iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 0.1
  */
-public enum StatutCase
-{
+public enum StatutCase {
 
     MARQUEE,
     MASQUEE,

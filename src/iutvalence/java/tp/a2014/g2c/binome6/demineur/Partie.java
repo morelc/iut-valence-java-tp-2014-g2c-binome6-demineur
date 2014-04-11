@@ -7,7 +7,6 @@ package iutvalence.java.tp.a2014.g2c.binome6.demineur;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 0.1
  */
-public class Partie
-{
+public class Partie {
 
 }

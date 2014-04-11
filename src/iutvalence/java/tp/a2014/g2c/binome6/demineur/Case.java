@@ -10,8 +10,7 @@ import static iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase.*
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 0.1
  */
-public class Case
-{
+public class Case {
 
     // Définition des varaibles:
     /**
@@ -146,8 +145,7 @@ public class Case
         if (this.statutCase == DECOUVERTE) {
             if (this.aUneBombe == false) {
                 return Integer.toString(this.aNBombesAdjacentes);
-            }
-            else {
+            } else {
                 return "X";
             }
         }

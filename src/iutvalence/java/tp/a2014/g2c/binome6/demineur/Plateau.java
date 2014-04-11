@@ -10,8 +10,7 @@ import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutPartie;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 0.1
  */
-public class Plateau
-{
+public class Plateau {
 
     // Définition des varaibles
     /**
@@ -57,10 +56,10 @@ public class Plateau
         this.nombreColonnesPlateau = nombreDeColonnesDuPlateau;
         this.nombreLignesPlateau = nombreDeLignesDuPlateau;
 
-// Définition des dimensions du tableau
+        // Définition des dimensions du tableau
         this.plateau = new Case[this.nombreColonnesPlateau][this.nombreLignesPlateau];
 
-// Initialisation des cases du tableau avec les propriétés: pas de bombe, pas de bombe adjacente et case masquée
+        // Initialisation des cases du tableau avec les propriétés: pas de bombe, pas de bombe adjacente et case masquée
         for (int numeroColonne = 0; numeroColonne < this.nombreColonnesPlateau; numeroColonne++) {
             for (int numeroLigne = 0; numeroLigne < this.nombreLignesPlateau; numeroLigne++) {
                 this.plateau[numeroColonne][numeroLigne] = new Case();
@@ -89,8 +88,7 @@ public class Plateau
                 /* TODO Implémentation extremement peu efficace. A discuter en TP. */
                 colonneOuPlacerLaBombe = (int) Math.round(Math.random() * (this.nombreColonnesPlateau - 1));
                 ligneOuPlacerLaBombe = (int) Math.round(Math.random() * (this.nombreLignesPlateau - 1));
-            }
-            while (this.plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].getaUneBombe() != false);
+            } while (this.plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].getaUneBombe() != false);
             this.plateau[colonneOuPlacerLaBombe][ligneOuPlacerLaBombe].setaUneBombe(true);
         }
     }
@@ -149,6 +147,25 @@ public class Plateau
         }
     }
 
+    // Getters et Setters:
+    /**
+     * Définition du statut de la partie.
+     *
+     * @param statutPartie nouveau statut
+     */
+    public void setStatutPartie(StatutPartie statutPartie) {
+        this.statutPartie = statutPartie;
+    }
+
+    /**
+     * Renvoie du statut de la partie.
+     *
+     * @return statutPartie, le statut de la partie.
+     */
+    public StatutPartie getStatutPartie() {
+        return statutPartie;
+    }
+
     // Méthodes génériques:
     /**
      * Méthode toString. Permet l'affichage en ascii-art du plateau Attention:
@@ -192,4 +209,5 @@ public class Plateau
 
         return plateauEnAsciiArt;
     }
+
 }
