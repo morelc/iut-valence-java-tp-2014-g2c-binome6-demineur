@@ -8,9 +8,10 @@ import static iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase.*
  *
  * @author BEGOT William <william.begot@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
- * @version 0.1
+ * @version 1.0
  */
-public class Case {
+public class Case
+{
 
     // Définition des varaibles:
     /**
@@ -30,9 +31,6 @@ public class Case {
      */
     private StatutCase statutCase;
 
-    /* TODO Est-ce réellement de passer par des constantes ici ? */
-    /* REPONSE: Ben... Oui! c'est mr Jean qui nous a dit que c'était préférable
-     pour si l'on avait besoin de valeurs par défaut dans le constructeur!  */
     // Définition des varaibles par défaut:
     /**
      * Valeur par défaut de la présence d'une bombe.
@@ -51,7 +49,8 @@ public class Case {
     /**
      * Constructeur de base.
      */
-    public Case() {
+    public Case()
+    {
         this.aUneBombe = Case.AUNEBOMBE_DEFAUT;
         this.aNBombesAdjacentes = Case.ANBOMBESADJACENTES_DEFAUT;
         this.statutCase = Case.STATUTCASE_DEFAUT;
@@ -63,7 +62,8 @@ public class Case {
      *
      * @return statut de la case en cours (marquée, masquée ou à découvert)
      */
-    public StatutCase getStatutCase() {
+    public StatutCase getStatutCase()
+    {
         return statutCase;
     }
 
@@ -73,7 +73,8 @@ public class Case {
      * @return statut de la bopbe (true <=> a une bombe / false <=> n'a pas de
      * bombe)
      */
-    public boolean getaUneBombe() {
+    public boolean getaUneBombe()
+    {
         return this.aUneBombe;
     }
 
@@ -82,7 +83,8 @@ public class Case {
      *
      * @return nombre de bombes adjacentes [0..8]
      */
-    public int getaNBombesAdjacentes() {
+    public int getaNBombesAdjacentes()
+    {
         return aNBombesAdjacentes;
     }
 
@@ -93,7 +95,8 @@ public class Case {
      * @param statutCase le nouveau statut de la case [MARQUEE, MASQUEE,
      * DECOUVERTE]
      */
-    public void setStatutCase(StatutCase statutCase) {
+    public void setStatutCase(StatutCase statutCase)
+    {
         this.statutCase = statutCase;
     }
 
@@ -102,7 +105,8 @@ public class Case {
      *
      * @param aUneBombe le nouveau statut de la bombe [true, false]
      */
-    public void setaUneBombe(boolean aUneBombe) {
+    public void setaUneBombe(boolean aUneBombe)
+    {
         this.aUneBombe = aUneBombe;
     }
 
@@ -111,7 +115,8 @@ public class Case {
      *
      * @param aNBombesAdjacentes le nouveau nombre de bombes adjacentes [0..8]
      */
-    public void setaNBombesAdjacentes(int aNBombesAdjacentes) {
+    public void setaNBombesAdjacentes(int aNBombesAdjacentes)
+    {
         this.aNBombesAdjacentes = aNBombesAdjacentes;
     }
 
@@ -120,8 +125,20 @@ public class Case {
      * Incrémenter le nombre de bombes adjacentes à la case en cours de
      * traitement.
      */
-    public void incrementerNBombesAdjacentes() {
+    public void incrementerNBombesAdjacentes()
+    {
         this.aNBombesAdjacentes++;
+    }
+
+    /**
+     * Méthode de test de case pour dé-couverture récursive.
+     *
+     * @return true si la case n'a aucune bombe adjacente et qu'elle n'est pas
+     * découverte
+     */
+    public boolean bombesAdjacentesNulEtCaseCouverte()
+    {
+        return ((this.aNBombesAdjacentes == 0) && (this.statutCase != StatutCase.DECOUVERTE));
     }
 
     // Définition des méthodes objet:
@@ -135,17 +152,24 @@ public class Case {
      * @return aspect visuel de la case en ascii-art
      */
     @Override
-    public String toString() {
-        if (this.statutCase == MASQUEE) {
+    public String toString()
+    {
+        if (this.statutCase == MASQUEE)
+        {
             return "#";
         }
-        if (this.statutCase == MARQUEE) {
+        if (this.statutCase == MARQUEE)
+        {
             return "M";
         }
-        if (this.statutCase == DECOUVERTE) {
-            if (this.aUneBombe == false) {
+        if (this.statutCase == DECOUVERTE)
+        {
+            if (this.aUneBombe == false)
+            {
                 return Integer.toString(this.aNBombesAdjacentes);
-            } else {
+            }
+            else
+            {
                 return "X";
             }
         }
