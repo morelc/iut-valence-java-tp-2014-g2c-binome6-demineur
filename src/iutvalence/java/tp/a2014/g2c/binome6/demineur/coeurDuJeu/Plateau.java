@@ -1,4 +1,4 @@
-package iutvalence.java.tp.a2014.g2c.binome6.demineur;
+package iutvalence.java.tp.a2014.g2c.binome6.demineur.coeurDuJeu;
 
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutPartie;
@@ -23,8 +23,9 @@ public class Plateau
 
     /**
      * Variable définissant le tableau.
+     * Il est laissé publique car il est nécessaire de constamment le modifier au travers de la classe Plateau. 
      */
-    Case[][] plateau;
+    public Case[][] plateau;
 
     /**
      * Variable définissant le nombre de bombes dans le plateau.
@@ -46,7 +47,7 @@ public class Plateau
      */
     private final static StatutPartie STATUT_PARTIE_DEFAULT = StatutPartie.ENCOURS;
     
-// Définition du constructeur
+    // Définition du constructeur
     /**
      * Constructeur du plateau.
      *
@@ -225,10 +226,10 @@ public class Plateau
     /**
      * Traitement récursif de l'affichage des cases sans mine adjacente.
      *
-     * @param numLigneColonne la colonne de la case où appliquer le changement
-     * @param numLigneCasela la ligne de la case où appliquer le changement
+     * @param numColonneCaseATraiter la colonne de la case où appliquer le changement
+     * @param numLigneCaseATraiter la ligne de la case où appliquer le changement
      */
-    void traitementRecursifCasesSansMineAdjacentesPlateau(int numColonneCaseATraiter, int numLigneCaseATraiter)
+    public void traitementRecursifCasesSansMineAdjacentesPlateau(int numColonneCaseATraiter, int numLigneCaseATraiter)
     {
 
         Case caseCourante = this.plateau[numColonneCaseATraiter][numLigneCaseATraiter];
@@ -312,7 +313,7 @@ public class Plateau
     /**
      * Vérifie si la partie est terminée ou non.
      */
-    void mettreAJourStatutPartie()
+    public void mettreAJourStatutPartie()
     {
         int compteurBombesNonExplosees = 0;
         int compteurCasesDecouvertes = 0;

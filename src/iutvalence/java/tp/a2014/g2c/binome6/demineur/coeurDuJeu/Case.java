@@ -1,4 +1,4 @@
-package iutvalence.java.tp.a2014.g2c.binome6.demineur;
+package iutvalence.java.tp.a2014.g2c.binome6.demineur.coeurDuJeu;
 
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase;
 import static iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase.*;

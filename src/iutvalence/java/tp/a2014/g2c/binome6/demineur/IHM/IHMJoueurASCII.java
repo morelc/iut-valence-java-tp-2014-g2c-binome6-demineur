@@ -1,8 +1,10 @@
-package iutvalence.java.tp.a2014.g2c.binome6.demineur;
+package iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM;
 
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.InteractionCase;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutPartie;
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.coeurDuJeu.Case;
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.coeurDuJeu.Plateau;
 
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.exceptions.NumColonneIncompatibleAvecLePlateauException;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.exceptions.NumLigneIncompatibleAvecLePlateauException;
@@ -94,7 +96,7 @@ public class IHMJoueurASCII implements IHMJoueur
     {
         boolean entreeLigneValide = false;
         boolean entreeColonneValide = false;
-
+        
         while (entreeLigneValide == false)
         {
             try
@@ -113,7 +115,7 @@ public class IHMJoueurASCII implements IHMJoueur
                 scanner.nextLine();
             }
         }
-
+        
         while (entreeColonneValide == false)
         {
             try
@@ -154,7 +156,7 @@ public class IHMJoueurASCII implements IHMJoueur
             }
         }
         while (valeurDeLEntree != 'm' && valeurDeLEntree != 'e' && valeurDeLEntree != 'd');
-
+        
         switch (valeurDeLEntree)
         {
             case 'm':
@@ -166,7 +168,7 @@ public class IHMJoueurASCII implements IHMJoueur
             case 'd':
                 this.derniereActionEntree = InteractionCase.DEMINER;
                 break;
-
+            
         }
     }
 
@@ -240,19 +242,30 @@ public class IHMJoueurASCII implements IHMJoueur
                 caseCourrante.setStatutCase(StatutCase.DECOUVERTE);
             }
         }
-
+        
     }
-
+    
     private void verifierStatutPartie(Plateau plateauAModifier)
     {
         plateauAModifier.mettreAJourStatutPartie();
-        if ((plateauAModifier.getStatutPartie()==StatutPartie.ESTPERDUE)||(plateauAModifier.getStatutPartie()==StatutPartie.ESTGAGNEE))
+        if ((plateauAModifier.getStatutPartie() == StatutPartie.ESTPERDUE) || (plateauAModifier.getStatutPartie() == StatutPartie.ESTGAGNEE))
         {
-                       System.out.println(plateauAModifier.toString());
-            if (plateauAModifier.getStatutPartie()==StatutPartie.ESTPERDUE)
-                       System.out.println("Vous avez perdu!");
+            for (int numColCaseADecouvrir = 0; numColCaseADecouvrir < plateauAModifier.getNombreColonnesPlateau(); numColCaseADecouvrir++)
+            {
+                for (int numLigCaseADecouvrir = 0; numLigCaseADecouvrir < plateauAModifier.getNombreLignesPlateau(); numLigCaseADecouvrir++)
+                {
+                    plateauAModifier.plateau[numColCaseADecouvrir][numLigCaseADecouvrir].setStatutCase(StatutCase.DECOUVERTE);
+                }
+            }
+            System.out.println(plateauAModifier.toString());
+            if (plateauAModifier.getStatutPartie() == StatutPartie.ESTPERDUE)
+            {
+                System.out.println("Vous avez perdu!");
+            }
             else
-                 System.out.println("Bravo! Vous avez gagné!");
+            {
+                System.out.println("Bravo! Vous avez gagné!");
+            }
         }
     }
 
@@ -274,5 +287,5 @@ public class IHMJoueurASCII implements IHMJoueur
         appliquerActionSurCase(plateauAModifier);
         verifierStatutPartie(plateauAModifier);
     }
-
+    
 }
