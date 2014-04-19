@@ -23,7 +23,8 @@ public class Plateau
 
     /**
      * Variable définissant le tableau.
-     * Il est laissé publique car il est nécessaire de constamment le modifier au travers de la classe Plateau. 
+     * Il est laissé publique car il est nécessaire de constamment le modifier
+     * au travers de la classe Plateau.
      */
     public Case[][] plateau;
 
@@ -41,12 +42,13 @@ public class Plateau
      * Variable définissant le nombre de lignes du plateau.
      */
     private final int nombreLignesPlateau;
-    
+
     /**
-     * Définition du statut par défaut de la partie avec plateau lors de sa construction.
+     * Définition du statut par défaut de la partie avec plateau lors de sa
+     * construction.
      */
     private final static StatutPartie STATUT_PARTIE_DEFAULT = StatutPartie.ENCOURS;
-    
+
     // Définition du constructeur
     /**
      * Constructeur du plateau.
@@ -190,7 +192,7 @@ public class Plateau
         this.statutPartie = statutPartie;
     }
 
-     /**
+    /**
      * Renvoie du statut de la partie.
      *
      * @return statutPartie, le statut de la partie.
@@ -199,7 +201,7 @@ public class Plateau
     {
         return statutPartie;
     }
-    
+
     /**
      * Obtention du nombre de colonnes du plateau.
      *
@@ -220,14 +222,14 @@ public class Plateau
         return nombreLignesPlateau;
     }
 
-       
     // Méthode d'opération demandée par le joueur sur le plateau
-    
     /**
      * Traitement récursif de l'affichage des cases sans mine adjacente.
      *
-     * @param numColonneCaseATraiter la colonne de la case où appliquer le changement
-     * @param numLigneCaseATraiter la ligne de la case où appliquer le changement
+     * @param numColonneCaseATraiter la colonne de la case où appliquer le
+     * changement
+     * @param numLigneCaseATraiter la ligne de la case où appliquer le
+     * changement
      */
     public void traitementRecursifCasesSansMineAdjacentesPlateau(int numColonneCaseATraiter, int numLigneCaseATraiter)
     {
@@ -309,7 +311,7 @@ public class Plateau
         }
 
     }
-    
+
     /**
      * Vérifie si la partie est terminée ou non.
      */
@@ -318,23 +320,29 @@ public class Plateau
         int compteurBombesNonExplosees = 0;
         int compteurCasesDecouvertes = 0;
         Case caseAVerifier;
-        
-        for(int colCaseVerifiee = 0; colCaseVerifiee<this.nombreColonnesPlateau; colCaseVerifiee++)
+
+        for (int colCaseVerifiee = 0; colCaseVerifiee < this.nombreColonnesPlateau; colCaseVerifiee++)
         {
-            for (int ligCaseVerifiee = 0; ligCaseVerifiee<this.nombreLignesPlateau; ligCaseVerifiee++)
+            for (int ligCaseVerifiee = 0; ligCaseVerifiee < this.nombreLignesPlateau; ligCaseVerifiee++)
             {
                 caseAVerifier = this.plateau[colCaseVerifiee][ligCaseVerifiee];
-                if(caseAVerifier.getStatutCase()==StatutCase.DECOUVERTE)
-                    compteurCasesDecouvertes ++;
-                if(((caseAVerifier.getStatutCase()==StatutCase.MARQUEE)||(caseAVerifier.getStatutCase()==StatutCase.MARQUEE))&&(caseAVerifier.getaUneBombe()))
-                    compteurBombesNonExplosees ++;
+                if (caseAVerifier.getStatutCase() == StatutCase.DECOUVERTE)
+                {
+                    compteurCasesDecouvertes++;
+                }
+                if (((caseAVerifier.getStatutCase() == StatutCase.MARQUEE) || (caseAVerifier.getStatutCase() == StatutCase.MARQUEE)) && (caseAVerifier.getaUneBombe()))
+                {
+                    compteurBombesNonExplosees++;
+                }
             }
         }
-        
-        if(compteurBombesNonExplosees+compteurCasesDecouvertes==this.nombreColonnesPlateau*this.getNombreLignesPlateau())
-            this.statutPartie=StatutPartie.ESTGAGNEE;
+
+        if (compteurBombesNonExplosees + compteurCasesDecouvertes == this.nombreColonnesPlateau * this.getNombreLignesPlateau())
+        {
+            this.statutPartie = StatutPartie.ESTGAGNEE;
+        }
     }
-    
+
     // Méthodes génériques:
     /**
      * Méthode toString. Permet l'affichage en ascii-art du plateau Attention:
@@ -383,7 +391,5 @@ public class Plateau
 
         return plateauEnAsciiArt;
     }
-
-    
 
 }

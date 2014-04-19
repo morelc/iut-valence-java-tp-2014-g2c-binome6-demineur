@@ -2,7 +2,6 @@ package iutvalence.java.tp.a2014.g2c.binome6.demineur.lancementPartie;
 
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.coeurDuJeu.Partie;
 
-
 /**
  * Lanceur de l'application.
  *

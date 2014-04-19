@@ -96,7 +96,7 @@ public class IHMJoueurASCII implements IHMJoueur
     {
         boolean entreeLigneValide = false;
         boolean entreeColonneValide = false;
-        
+
         while (entreeLigneValide == false)
         {
             try
@@ -115,7 +115,7 @@ public class IHMJoueurASCII implements IHMJoueur
                 scanner.nextLine();
             }
         }
-        
+
         while (entreeColonneValide == false)
         {
             try
@@ -156,7 +156,7 @@ public class IHMJoueurASCII implements IHMJoueur
             }
         }
         while (valeurDeLEntree != 'm' && valeurDeLEntree != 'e' && valeurDeLEntree != 'd');
-        
+
         switch (valeurDeLEntree)
         {
             case 'm':
@@ -168,7 +168,7 @@ public class IHMJoueurASCII implements IHMJoueur
             case 'd':
                 this.derniereActionEntree = InteractionCase.DEMINER;
                 break;
-            
+
         }
     }
 
@@ -242,9 +242,9 @@ public class IHMJoueurASCII implements IHMJoueur
                 caseCourrante.setStatutCase(StatutCase.DECOUVERTE);
             }
         }
-        
+
     }
-    
+
     private void verifierStatutPartie(Plateau plateauAModifier)
     {
         plateauAModifier.mettreAJourStatutPartie();
@@ -287,5 +287,5 @@ public class IHMJoueurASCII implements IHMJoueur
         appliquerActionSurCase(plateauAModifier);
         verifierStatutPartie(plateauAModifier);
     }
-    
+
 }

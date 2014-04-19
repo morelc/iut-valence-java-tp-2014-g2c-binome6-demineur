@@ -8,14 +8,14 @@ import java.util.Scanner;
 /**
  * Classe contenant les paramètres de la partie.
  * Elle permet de créer (en IHM-ASCII) les paramètres d'une partie.
- * 
+ *
  * @author BEGOT William <william.begot@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 1.0
  */
 public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
 {
-    
+
     // Définition des variables
     /**
      * Variable définissant le nombre de bombes dans le plateau.
@@ -31,8 +31,8 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
      * Variable définissant le nombre de lignes du plateau.
      */
     private int nombreLignesPlateau;
-    
-   /**
+
+    /**
      * Scanner d'entrées du joueur.
      */
     Scanner scanner = new Scanner(System.in);
@@ -50,20 +50,19 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
      * Variable définissant le nombre de lignes du plateau par défaut.
      */
     private final static int NOMBRE_LIGNES_PLATEAU_DEFAULT = 10;
-    
+
     /**
-     * Définition du statut par défaut de la partie avec plateau lors de sa construction.
+     * Définition du statut par défaut de la partie avec plateau lors de sa
+     * construction.
      */
-    
     public IHMCreerParametresPartieASCII()
     {
         this.nombreBombesPlateau = NOMBRE_BOMBES_PLATEAU_DEFAULT;
         this.nombreColonnesPlateau = NOMBRE_COLONNES_PLATEAU_DEFAULT;
         this.nombreLignesPlateau = NOMBRE_LIGNES_PLATEAU_DEFAULT;
     }
-    
-    // Méthodes d'entrées de paramètres:
 
+    // Méthodes d'entrées de paramètres:
     /**
      * Méthode permettant de modifier les paramètres de la partie.
      */
@@ -72,7 +71,7 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
         boolean entreeLargeurTableauValide = false;
         boolean entreeHauteurTableauValide = false;
         boolean entreeNbBombesTableauValide = false;
-        
+
         while (entreeLargeurTableauValide == false)
         {
             try
@@ -130,7 +129,6 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
             }
         }
 
-
     }
 
     /**
@@ -146,8 +144,8 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
             throw new SaisieDimensionTableauInvalideException();
         }
     }
-    
-        /**
+
+    /**
      * Méthode de saisie de la hauteur du tableau.
      */
     private void saisirHauteurPlateau() throws InputMismatchException, SaisieDimensionTableauInvalideException
@@ -160,8 +158,8 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
             throw new SaisieDimensionTableauInvalideException();
         }
     }
-    
-          /**
+
+    /**
      * Méthode de saisie du nombre de bombes sur le tableau.
      */
     private void saisirNbBombesPlateau() throws InputMismatchException, SaisieNbBombesPlateauInvalideException
@@ -169,19 +167,21 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
         System.out.println("Veuillez entrer le nombre de bombes du pateau: (entre 5 et 100)");
         this.nombreBombesPlateau = 0;
         this.nombreBombesPlateau = scanner.nextInt();
-        if ((this.getNombreBombesPlateau() >= 100) || (this.getNombreBombesPlateau() < 5) ||(this.getNombreBombesPlateau() > (this.getNombreColonnesPlateau()*this.getNombreLignesPlateau())))
+        if ((this.getNombreBombesPlateau() >= 100) || (this.getNombreBombesPlateau() < 5) || (this.getNombreBombesPlateau() > (this.getNombreColonnesPlateau() * this.getNombreLignesPlateau())))
         {
             throw new SaisieNbBombesPlateauInvalideException();
         }
     }
-    
+
     // Méthodes utilisables hors-classe:
     /**
-     * Méthode de paramétrage de la partie (garder les paramètres par défaut ou les modifier).
+     * Méthode de paramétrage de la partie (garder les paramètres par défaut ou
+     * les modifier).
      */
     @Override
-    public void parametrerPartie(){
-            char valeurDeLEntree;
+    public void parametrerPartie()
+    {
+        char valeurDeLEntree;
         System.out.println("Voulez-vous garder les paramètres par défaut (10 bombes sur un plateau de 10*10 cases) ? o = oui / n = non ");
         do
         {
@@ -197,7 +197,8 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
         }
         while (valeurDeLEntree != 'o' && valeurDeLEntree != 'n');
 
-        if(valeurDeLEntree=='n'){
+        if (valeurDeLEntree == 'n')
+        {
             modifierparametres();
         }
     }
@@ -205,6 +206,7 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
     // Getters
     /**
      * Obtenir le nombre de bombes à positionner sur le plateau.
+     *
      * @return le nombreBombesPlateau
      */
     @Override
@@ -215,6 +217,7 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
 
     /**
      * Obtenir le de colonnes du plateau.
+     *
      * @return le nombreColonnesPlateau
      */
     @Override
@@ -225,6 +228,7 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
 
     /**
      * Obtenir le de lignes du plateau.
+     *
      * @return le nombreLignesPlateau
      */
     @Override

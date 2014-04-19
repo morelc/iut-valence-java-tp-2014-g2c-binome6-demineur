@@ -19,5 +19,5 @@ public interface IHMJoueur
      * @param plateauAModifier plateau sur lequel interagir.
      */
     void interactionJoueur(Plateau plateauAModifier);
-    
+
 }
