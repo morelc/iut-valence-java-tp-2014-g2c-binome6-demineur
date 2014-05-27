@@ -11,8 +11,7 @@ import javax.swing.SwingUtilities;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 1.0
  */
-public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie
-{
+public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie {
 
     // Définition des variables
     /**
@@ -54,13 +53,12 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie
      * Fenetre d'accueil du jeu.
      */
     private IHMAccueilJeu fenetreAccueil;
-    
+
     /**
      * Définition du statut par défaut de la partie avec plateau lors de sa
      * construction.
      */
-    public IHMCreerParametresPartieSWING()
-    {
+    public IHMCreerParametresPartieSWING() {
         this.nombreBombesPlateau = NOMBRE_BOMBES_PLATEAU_DEFAULT;
         this.nombreColonnesPlateau = NOMBRE_COLONNES_PLATEAU_DEFAULT;
         this.nombreLignesPlateau = NOMBRE_LIGNES_PLATEAU_DEFAULT;
@@ -74,20 +72,16 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie
      * les modifier).
      */
     @Override
-    public void parametrerPartie()
-    {
+    public void parametrerPartie() {
         SwingUtilities.invokeLater(this.fenetreAccueil);
-        while(this.fenetreAccueil.isFenetreOuverte())
-        {
+        while (!this.fenetreAccueil.isFenetreFermee()) {
             System.out.print("");
         }
-        if (!this.fenetreAccueil.isUtiliserLesParametresParDefaut())
-        {
-        SwingUtilities.invokeLater(this.fenetreParametresPartie);
-        while(!this.fenetreParametresPartie.isTousLesDonnesSontEntrees())
-        {
-            System.out.print("");
-        }
+        if (!this.fenetreAccueil.isUtiliserLesParametresParDefaut()) {
+            SwingUtilities.invokeLater(this.fenetreParametresPartie);
+            while (!this.fenetreParametresPartie.isTousLesDonnesSontEntrees()) {
+                System.out.print("");
+            }
         }
     }
 
@@ -98,8 +92,7 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie
      * @return le nombreBombesPlateau
      */
     @Override
-    public int getNombreBombesPlateau()
-    {
+    public int getNombreBombesPlateau() {
         return nombreBombesPlateau;
     }
 
@@ -109,8 +102,7 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie
      * @return le nombreColonnesPlateau
      */
     @Override
-    public int getNombreColonnesPlateau()
-    {
+    public int getNombreColonnesPlateau() {
         return nombreColonnesPlateau;
     }
 
@@ -120,8 +112,7 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie
      * @return le nombreLignesPlateau
      */
     @Override
-    public int getNombreLignesPlateau()
-    {
+    public int getNombreLignesPlateau() {
         return nombreLignesPlateau;
     }
 
@@ -130,8 +121,7 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie
      *
      * @param nombreBombesPlateau le nouveau nombre de bombes
      */
-    public void setNombreBombesPlateau(int nombreBombesPlateau)
-    {
+    public void setNombreBombesPlateau(int nombreBombesPlateau) {
         this.nombreBombesPlateau = nombreBombesPlateau;
     }
 
@@ -140,17 +130,16 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie
      *
      * @param nombreColonnesPlateau le nouveau nombre de colonnes
      */
-    public void setNombreColonnesPlateau(int nombreColonnesPlateau)
-    {
+    public void setNombreColonnesPlateau(int nombreColonnesPlateau) {
         this.nombreColonnesPlateau = nombreColonnesPlateau;
     }
 
     /**
-     * Paramétrer le nombre de Lignes.      
+     * Paramétrer le nombre de Lignes.
+     *
      * @param nombreLignesPlateau le nouveau nombre de lignes.
      */
-    public void setNombreLignesPlateau(int nombreLignesPlateau)
-    {
+    public void setNombreLignesPlateau(int nombreLignesPlateau) {
         this.nombreLignesPlateau = nombreLignesPlateau;
     }
 }

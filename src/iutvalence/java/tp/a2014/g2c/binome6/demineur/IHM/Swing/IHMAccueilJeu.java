@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 /**
@@ -20,7 +21,7 @@ public class IHMAccueilJeu implements Runnable, ActionListener
     private JFrame fenetreAccueil;
     private JButton parametresDefaut;
     private boolean utiliserLesParametresParDefaut;
-    private boolean fenetreOuverte;
+    private boolean fenetreFermee;
 
     public IHMAccueilJeu()
     {
@@ -31,31 +32,37 @@ public class IHMAccueilJeu implements Runnable, ActionListener
     public void run()
     {
         // Initialisation de la varaibale d'etat de la fenetre
-        this.fenetreOuverte = true;
+        this.fenetreFermee = false;
      
         // Initialisation de la JFrame
         this.fenetreAccueil = new JFrame();
+        ImageIcon iconeDuJeu = new ImageIcon("./src/iutvalence/java/tp/a2014/g2c/binome6/demineur/IHM/Swing/iconeDuJeu.png");
+        this.fenetreAccueil.setIconImage(iconeDuJeu.getImage());
         this.fenetreAccueil.setTitle("Bienvenue!!!");
-        this.fenetreAccueil.setSize(300, 250);
+        this.fenetreAccueil.setSize(500, 300);
         this.fenetreAccueil.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         this.fenetreAccueil.setResizable(false);
 
         // Layout de la JFrame
         JPanel panneauPrincipalAccueil = new JPanel();
-        panneauPrincipalAccueil.setLayout(new GridLayout(5, 1));
+        panneauPrincipalAccueil.setLayout(new GridLayout(6, 1));
         this.fenetreAccueil.setContentPane(panneauPrincipalAccueil);
 
         // Ajout des composants
-        JLabel jlabelMessageAccueil = new JLabel("Bienvenue sur le démineur de MOREL Charles et BEGOT William");
-        jlabelMessageAccueil.setIcon(new ImageIcon("./IHM/SWING/demineur.png"));
+        JLabel jlabelMessageAccueil = new JLabel("Bienvenue sur le démineur de MOREL Charles et BEGOT William",SwingConstants.CENTER);
+        jlabelMessageAccueil.setIcon(new ImageIcon("./src/iutvalence/java/tp/a2014/g2c/binome6/demineur/IHM/Swing/demineurIconeAcc.png"));
         panneauPrincipalAccueil.add(jlabelMessageAccueil);
         panneauPrincipalAccueil.add(new JLabel(""));
-        panneauPrincipalAccueil.add(new JLabel("Les paramètres par féaut sont: une grille 10*10 avec 10 bombes"));
-        panneauPrincipalAccueil.add(new JLabel("Que souhaitez-vous faire?"));
+        panneauPrincipalAccueil.add(new JLabel("Les paramètres par défaut sont: une grille 10*10 avec 10 bombes",SwingConstants.CENTER));
+        panneauPrincipalAccueil.add(new JLabel("Que souhaitez-vous faire?", SwingConstants.CENTER));
         this.parametresDefaut = new JButton("Démarrer la partie avec les parametres par défaut");
+        this.parametresDefaut.setIcon(new ImageIcon("./src/iutvalence/java/tp/a2014/g2c/binome6/demineur/IHM/Swing/play_default.png"));
+        this.parametresDefaut.setFocusable(false);
         parametresDefaut.addActionListener(this);
         panneauPrincipalAccueil.add(this.parametresDefaut);
-        JButton parametresPersonalises = new JButton("Démarrer la partie avec les parametres personalises");
+        JButton parametresPersonalises = new JButton("Démarrer la partie avec les parametres personalisés");
+        parametresPersonalises.setIcon(new ImageIcon("./src/iutvalence/java/tp/a2014/g2c/binome6/demineur/IHM/Swing/play_custum.png"));
+        parametresPersonalises.setFocusable(false);
         parametresPersonalises.addActionListener(this);
         panneauPrincipalAccueil.add(parametresPersonalises);
         
@@ -72,7 +79,7 @@ public class IHMAccueilJeu implements Runnable, ActionListener
         {
             this.utiliserLesParametresParDefaut = false;
         }
-        this.fenetreOuverte = false;
+        this.fenetreFermee = true;
         this.fenetreAccueil.dispose();
     }
 
@@ -89,11 +96,11 @@ public class IHMAccueilJeu implements Runnable, ActionListener
     /**
      * Renvoie l'état de la fenetre.
      * 
-     * @return the fenetreOuverte
+     * @return the fenetreFermee
      */
-    public boolean isFenetreOuverte()
+    public boolean isFenetreFermee()
     {
-        return fenetreOuverte;
+        return fenetreFermee;
     }
 
 
