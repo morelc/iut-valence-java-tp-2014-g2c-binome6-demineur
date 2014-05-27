@@ -1,9 +1,9 @@
 package iutvalence.java.tp.a2014.g2c.binome6.demineur.coeurDuJeu;
 
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.IHMCreerParametresPartie;
-import iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.IHMCreerParametresPartieASCII;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.IHMJoueur;
-import iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.IHMJoueurASCII;
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.Swing.IHMCreerParametresPartieSWING;
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.Swing.IHMJoueurSWING;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutPartie;
 
 /**
@@ -36,14 +36,14 @@ public class Partie
     public Partie()
     {
         // création d'une partie en ascii:
-        // initialisation d'une IHM de joueur en ASCII
-        this.MonJoueurEnASCII = new IHMJoueurASCII();
-        // Initialisation d'une IHM pour paramétrer une partie en ASCII
-        this.parametresPartie = new IHMCreerParametresPartieASCII();
+        // initialisation d'une IHM de joueur en SWING
+        this.MonJoueurEnASCII = new IHMJoueurSWING();
+        // Initialisation d'une IHM pour paramétrer une partie en SWING
+        this.parametresPartie = new IHMCreerParametresPartieSWING();
     }
 
     // Définition des méthodes:
-    private void initialisaerPartie()
+    private void initialiserPartie()
     {
         // Création des parametres de partie
         this.parametresPartie.parametrerPartie();
@@ -57,8 +57,8 @@ public class Partie
 
     public void lancerPartie()
     {
-        System.out.println("Bienvenue sur le démineur de MOREL Charles et BEGOT William (V.1.0)");
-        initialisaerPartie();
+        
+        initialiserPartie();
         while (this.monplateau.getStatutPartie() == StatutPartie.ENCOURS)
         {
             MonJoueurEnASCII.interactionJoueur(monplateau);

@@ -1,5 +1,6 @@
-package iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM;
+package iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.ASCII;
 
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.IHMCreerParametresPartie;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.exceptions.SaisieDimensionTableauInvalideException;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.exceptions.SaisieNbBombesPlateauInvalideException;
 import java.util.InputMismatchException;
@@ -182,6 +183,7 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
     public void parametrerPartie()
     {
         char valeurDeLEntree;
+        System.out.println("Bienvenue sur le démineur de MOREL Charles et BEGOT William (V.1.0)");
         System.out.println("Voulez-vous garder les paramètres par défaut (10 bombes sur un plateau de 10*10 cases) ? o = oui / n = non ");
         do
         {

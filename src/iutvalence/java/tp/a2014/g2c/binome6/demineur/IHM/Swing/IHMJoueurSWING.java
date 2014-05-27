@@ -1,5 +1,7 @@
-package iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM;
+package iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.Swing;
 
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.ASCII.*;
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.IHMJoueur;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.InteractionCase;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutPartie;
@@ -19,7 +21,7 @@ import java.util.Scanner;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 1.0
  */
-public class IHMJoueurASCII implements IHMJoueur
+public class IHMJoueurSWING implements IHMJoueur
 {
     // Définition des variables:
 
@@ -54,7 +56,7 @@ public class IHMJoueurASCII implements IHMJoueur
     private final static int DERNIERE_COLONNE_ENTREE_DEFAULT = 0;
 
     // Constructeur
-    public IHMJoueurASCII()
+    public IHMJoueurSWING()
     {
         this.derniereLigneEntree = DERNIERE_LIGNE_ENTREE_DEFAULT;
         this.derniereColonneEntree = DERNIERE_COLONNE_ENTREE_DEFAULT;
