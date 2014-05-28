@@ -20,7 +20,7 @@ public class Partie
     /**
      * Initialisation de l'IHM du Joueur
      */
-    private final IHMJoueur MonJoueurEnASCII;
+    private final IHMJoueur monJoueurSWING;
 
     /**
      * Paramètres de la partie
@@ -37,7 +37,7 @@ public class Partie
     {
         // création d'une partie en ascii:
         // initialisation d'une IHM de joueur en SWING
-        this.MonJoueurEnASCII = new IHMJoueurSWING();
+        this.monJoueurSWING = new IHMJoueurSWING();
         // Initialisation d'une IHM pour paramétrer une partie en SWING
         this.parametresPartie = new IHMCreerParametresPartieSWING();
     }
@@ -61,7 +61,7 @@ public class Partie
         initialiserPartie();
         while (this.monplateau.getStatutPartie() == StatutPartie.ENCOURS)
         {
-            MonJoueurEnASCII.interactionJoueur(monplateau);
+            monJoueurSWING.interactionJoueur(monplateau);
         }
     }
 }

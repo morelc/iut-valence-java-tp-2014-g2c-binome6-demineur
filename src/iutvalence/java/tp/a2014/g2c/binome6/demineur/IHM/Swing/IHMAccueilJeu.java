@@ -1,5 +1,6 @@
 package iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.Swing;
 
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.ProprietesEcran;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,6 +43,7 @@ public class IHMAccueilJeu implements Runnable, ActionListener
         this.fenetreAccueil.setSize(500, 300);
         this.fenetreAccueil.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         this.fenetreAccueil.setResizable(false);
+        this.fenetreAccueil.setLocation(ProprietesEcran.ObtenirLlePointXDAncrageOptimaleDeLaFenetre(500), ProprietesEcran.ObtenirLlePointYDAncrageOptimaleDeLaFenetre(300));
 
         // Layout de la JFrame
         JPanel panneauPrincipalAccueil = new JPanel();

@@ -26,7 +26,7 @@ public class Plateau
      * Il est laissé publique car il est nécessaire de constamment le modifier
      * au travers de la classe Plateau.
      */
-    public Case[][] plateau;
+    private final Case[][] plateau;
 
     /**
      * Variable définissant le nombre de bombes dans le plateau.
@@ -37,6 +37,11 @@ public class Plateau
      * Variable définissant le nombre de colonnes du plateau.
      */
     private final int nombreColonnesPlateau;
+    
+    /**
+     * Variable définissant le moment exacte où le jeu a débuté.
+     */
+    private final long heureDeDebutDuJeu;
 
     /**
      * Variable définissant le nombre de lignes du plateau.
@@ -66,6 +71,7 @@ public class Plateau
         this.nombreColonnesPlateau = nombreDeColonnesDuPlateau;
         this.nombreLignesPlateau = nombreDeLignesDuPlateau;
         this.statutPartie = STATUT_PARTIE_DEFAULT;
+        this.heureDeDebutDuJeu = System.currentTimeMillis();
 
         // Définition des dimensions du tableau
         this.plateau = new Case[this.nombreColonnesPlateau][this.nombreLignesPlateau];
@@ -330,14 +336,14 @@ public class Plateau
                 {
                     compteurCasesDecouvertes++;
                 }
-                if (((caseAVerifier.getStatutCase() == StatutCase.MARQUEE) || (caseAVerifier.getStatutCase() == StatutCase.MARQUEE)) && (caseAVerifier.getaUneBombe()))
+                if (((caseAVerifier.getStatutCase() == StatutCase.MARQUEE) || (caseAVerifier.getStatutCase() == StatutCase.MASQUEE)) && (caseAVerifier.getaUneBombe()))
                 {
                     compteurBombesNonExplosees++;
                 }
             }
         }
 
-        if (compteurBombesNonExplosees + compteurCasesDecouvertes == this.nombreColonnesPlateau * this.getNombreLignesPlateau())
+        if (compteurBombesNonExplosees + compteurCasesDecouvertes == this.nombreColonnesPlateau * this.nombreLignesPlateau)
         {
             this.statutPartie = StatutPartie.ESTGAGNEE;
         }
@@ -390,6 +396,17 @@ public class Plateau
         }
 
         return plateauEnAsciiArt;
+    }
+
+    
+    // Getters:
+    
+    public Case[][] getPlateau() {
+        return plateau;
+    }
+
+    public long getHeureDeDebutDuJeu() {
+        return heureDeDebutDuJeu;
     }
 
 }

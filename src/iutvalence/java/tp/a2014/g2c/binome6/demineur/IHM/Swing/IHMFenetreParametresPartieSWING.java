@@ -1,5 +1,6 @@
 package iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.Swing;
 
+import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.ProprietesEcran;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,6 +45,7 @@ public class IHMFenetreParametresPartieSWING implements Runnable, ActionListener
         this.fenetreParametres.setSize(800, 250);
         this.fenetreParametres.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         this.fenetreParametres.setResizable(false);
+        this.fenetreParametres.setLocation(ProprietesEcran.ObtenirLlePointXDAncrageOptimaleDeLaFenetre(800), ProprietesEcran.ObtenirLlePointYDAncrageOptimaleDeLaFenetre(250));
 
         // Layout de la JFrame
         JPanel panneauPrincipalParametres = new JPanel();
@@ -74,9 +76,9 @@ public class IHMFenetreParametresPartieSWING implements Runnable, ActionListener
     @Override
     public void actionPerformed(ActionEvent actionSelectionnee) {
 
-        int nombreDeColonnesEntree = 0;
-        int nombreDeLignesEntree = 0;
-        int nombreDeBombeEntree = 0;
+        int nombreDeColonnesEntree;
+        int nombreDeLignesEntree;
+        int nombreDeBombeEntree;
         
         try {
             nombreDeColonnesEntree = Integer.parseInt(this.nombreDeColonnes.getText());

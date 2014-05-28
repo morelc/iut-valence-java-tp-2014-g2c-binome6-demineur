@@ -6,7 +6,6 @@ import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutPartie;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.coeurDuJeu.Case;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.coeurDuJeu.Plateau;
-
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.exceptions.NumColonneIncompatibleAvecLePlateauException;
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.exceptions.NumLigneIncompatibleAvecLePlateauException;
 import java.util.InputMismatchException;
@@ -186,7 +185,7 @@ public class IHMJoueurASCII implements IHMJoueur
      */
     private void appliquerActionSurCase(Plateau plateauAModifier)
     {
-        Case CaseCourrante = plateauAModifier.plateau[this.derniereColonneEntree][this.derniereLigneEntree];
+        Case CaseCourrante = plateauAModifier.getPlateau()[this.derniereColonneEntree][this.derniereLigneEntree];
 
         // Traitement du cas où la case à modifier est déjà démasquée (donc aucune action n'est possible)
         if (CaseCourrante.getStatutCase() == StatutCase.DECOUVERTE)
@@ -222,7 +221,7 @@ public class IHMJoueurASCII implements IHMJoueur
      */
     private void deminerCase(Plateau plateauAModifier)
     {
-        Case caseCourrante = plateauAModifier.plateau[this.derniereColonneEntree][this.derniereLigneEntree];
+        Case caseCourrante = plateauAModifier.getPlateau()[this.derniereColonneEntree][this.derniereLigneEntree];
         // traitement du cas où la case a une bombe
         if (caseCourrante.getaUneBombe())
         {
@@ -255,7 +254,7 @@ public class IHMJoueurASCII implements IHMJoueur
             {
                 for (int numLigCaseADecouvrir = 0; numLigCaseADecouvrir < plateauAModifier.getNombreLignesPlateau(); numLigCaseADecouvrir++)
                 {
-                    plateauAModifier.plateau[numColCaseADecouvrir][numLigCaseADecouvrir].setStatutCase(StatutCase.DECOUVERTE);
+                    plateauAModifier.getPlateau()[numColCaseADecouvrir][numLigCaseADecouvrir].setStatutCase(StatutCase.DECOUVERTE);
                 }
             }
             System.out.println(plateauAModifier.toString());
