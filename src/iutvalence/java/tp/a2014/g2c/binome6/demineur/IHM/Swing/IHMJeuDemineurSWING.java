@@ -14,22 +14,44 @@ import javax.swing.JSplitPane;
  */
 class IHMJeuDemineurSWING implements Runnable {
 
+    /**
+     * Référence vers la classe parent contenant (entre autres) la JFrame du
+     * jeu.
+     */
     private final IHMJoueurSWING refVersIHMJoueurSWING;
 
+    /**
+     * Référence vers le plateau du démineur.
+     */
     private final Plateau refVersPlateau;
 
+    /**
+     * JFrame contenant les divers composants du jeu (JMenu, grille, JPanel de
+     * choix d'action/minuteur/compteur mines restantes).
+     */
     private JFrame fenetrePrincipaleDuJeu;
+
+    /**
+     * JPanel de choix d'action/minuteur/compteur mines restantes
+     */
     private BoutonRadioSelectionAction boutonAction;
 
-    public IHMJeuDemineurSWING(IHMJoueurSWING refVersIHMJoueurSWING, Plateau refVersPlateau) {
+    // Définition du constructeur:
+    public IHMJeuDemineurSWING(IHMJoueurSWING refVersIHMJoueurSWING, Plateau refVersPlateau)
+    {
         this.refVersIHMJoueurSWING = refVersIHMJoueurSWING;
         this.refVersPlateau = refVersPlateau;
-                this.boutonAction = new BoutonRadioSelectionAction(this.refVersPlateau);
+        this.boutonAction = new BoutonRadioSelectionAction(this.refVersPlateau);
 
     }
-
+    // Définition des méthodes:
+    /**
+     * Implémentation de Runnable.
+     * Permet de lancer le fenêtre JFrame principale du jeu (composants compris)
+     */
     @Override
-    public void run() {
+    public void run()
+    {
         // Initialisation de la JFrame
         this.fenetrePrincipaleDuJeu = new JFrame();
         ImageIcon iconeDuJeu = new ImageIcon("./src/iutvalence/java/tp/a2014/g2c/binome6/demineur/IHM/Swing/iconeDuJeu.png");
@@ -59,11 +81,14 @@ class IHMJeuDemineurSWING implements Runnable {
     }
 
     // Getters
-    public JFrame getFenetrePrincipaleDuJeu() {
+    public JFrame getFenetrePrincipaleDuJeu()
+    {
         return fenetrePrincipaleDuJeu;
     }
 
-    public BoutonRadioSelectionAction getBoutonAction() {
+    public BoutonRadioSelectionAction getBoutonAction()
+    {
         return boutonAction;
     }
+
 }

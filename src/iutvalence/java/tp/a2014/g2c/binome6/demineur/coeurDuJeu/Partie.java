@@ -13,9 +13,8 @@ import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutPartie;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 1.0
  */
-public class Partie
-{
-    // Définition des variables:
+public class Partie {
+    // Définition des attributs:
 
     /**
      * Initialisation de l'IHM du Joueur
@@ -43,6 +42,11 @@ public class Partie
     }
 
     // Définition des méthodes:
+    /**
+     * Méthode permettant d'initialiser une partie.
+     * Elle permet entre autres d'obtenir les paramètres et d'instancier les
+     * principales classes du jeu.
+     */
     private void initialiserPartie()
     {
         // Création des parametres de partie
@@ -55,13 +59,17 @@ public class Partie
         this.monplateau = new Plateau(this.parametresPartie.getNombreColonnesPlateau(), this.parametresPartie.getNombreLignesPlateau(), this.parametresPartie.getNombreBombesPlateau());
     }
 
+    /**
+     * Méthode permettant de lancer une partie.
+     * Cette méthode initialise la partie, puis la lance.
+     */
     public void lancerPartie()
     {
-        
         initialiserPartie();
         while (this.monplateau.getStatutPartie() == StatutPartie.ENCOURS)
         {
             monJoueurSWING.interactionJoueur(monplateau);
         }
     }
+
 }

@@ -5,8 +5,7 @@ package iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM;
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public interface IHMCreerParametresPartie
-{
+public interface IHMCreerParametresPartie {
 
     // Getters
     /**

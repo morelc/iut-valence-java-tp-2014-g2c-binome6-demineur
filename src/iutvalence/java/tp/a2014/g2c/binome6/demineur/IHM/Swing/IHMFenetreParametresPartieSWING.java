@@ -14,29 +14,60 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 /**
- * Classe utilisée pour créer une fenetre afin de modifier les parametres de la
+ * Classe utilisée pour créer une fenêtre afin de modifier les paramètres de la
  * partie.
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
 public class IHMFenetreParametresPartieSWING implements Runnable, ActionListener {
 
+    // Définition des attributs.
+    /**
+     * Attribut permettant de savoir si tous les paramètres personnalisés sont
+     * entrés.
+     */
     private boolean tousLesDonnesSontEntrees;
 
+    /**
+     * Référence vers la classe parente contenant les paramètres de la partie.
+     */
     IHMCreerParametresPartieSWING refVersParametresPartie;
+
+    /**
+     * Champ d'entrée du nombre de colonnes.
+     */
     private JTextField nombreDeColonnes;
+
+    /**
+     * Champ d'entrée du nombre de lignes.
+     */
     private JTextField nombreDeLignes;
+
+    /**
+     * Champ d'entrée du nombre de bombes.
+     */
     private JTextField nombreDeBombes;
-    private JButton demarrerPartie;
+
+    /**
+     * Fenêtre d'entrée de paramètres.
+     */
     private JFrame fenetreParametres;
 
-    public IHMFenetreParametresPartieSWING(IHMCreerParametresPartieSWING refVersParametresPartie) {
+    // Définition du constructeur
+    public IHMFenetreParametresPartieSWING(IHMCreerParametresPartieSWING refVersParametresPartie)
+    {
         this.tousLesDonnesSontEntrees = false;
         this.refVersParametresPartie = refVersParametresPartie;
     }
 
+    // Définition des méthodes
+    /**
+     * Implémentation de Runnable.
+     * Permet de lancer le fenêtre JFrame (composants compris)
+     */
     @Override
-    public void run() {
+    public void run()
+    {
         // Initialisation de la JFrame
         this.fenetreParametres = new JFrame();
         ImageIcon iconeDuJeu = new ImageIcon("./src/iutvalence/java/tp/a2014/g2c/binome6/demineur/IHM/Swing/iconeDuJeu.png");
@@ -63,57 +94,79 @@ public class IHMFenetreParametresPartieSWING implements Runnable, ActionListener
         nombreDeBombes = new JTextField(String.valueOf(this.refVersParametresPartie.getNombreBombesPlateau()));
         panneauPrincipalParametres.add(this.nombreDeBombes);
         panneauPrincipalParametres.add(new JLabel(""));
-        this.demarrerPartie = new JButton("Démarrer la partie!");
-        this.demarrerPartie.setIcon(new ImageIcon("./src/iutvalence/java/tp/a2014/g2c/binome6/demineur/IHM/Swing/play_custum.png"));
-        this.demarrerPartie.setFocusable(false);
-        this.demarrerPartie.addActionListener(this);
-        panneauPrincipalParametres.add(this.demarrerPartie);
+        JButton demarrerPartie = new JButton("Démarrer la partie!");
+        demarrerPartie.setIcon(new ImageIcon("./src/iutvalence/java/tp/a2014/g2c/binome6/demineur/IHM/Swing/play_custum.png"));
+        demarrerPartie.setFocusable(false);
+        demarrerPartie.addActionListener(this);
+        panneauPrincipalParametres.add(demarrerPartie);
 
         // Affichage de la fenetre
         this.fenetreParametres.setVisible(true);
     }
 
+    /**
+     * Implémentation de la classe ActionListener.
+     * Permet de lancer la vérification des données entrés, puis de notifier la
+     * fin de saisie ainsi que fermer la fenêtre si tous les paramètres sont
+     * valides.
+     *
+     * @param actionSelectionnee
+     */
     @Override
-    public void actionPerformed(ActionEvent actionSelectionnee) {
+    public void actionPerformed(ActionEvent actionSelectionnee)
+    {
 
         int nombreDeColonnesEntree;
         int nombreDeLignesEntree;
         int nombreDeBombeEntree;
-        
-        try {
+
+        try
+        {
             nombreDeColonnesEntree = Integer.parseInt(this.nombreDeColonnes.getText());
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e)
+        {
             nombreDeColonnesEntree = 0;
         }
 
-        try {
+        try
+        {
             nombreDeLignesEntree = Integer.parseInt(this.nombreDeLignes.getText());
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e)
+        {
             nombreDeLignesEntree = 0;
         }
 
-        try {
+        try
+        {
             nombreDeBombeEntree = Integer.parseInt(this.nombreDeBombes.getText());
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e)
+        {
             nombreDeBombeEntree = 0;
         }
 
-        if ((nombreDeColonnesEntree < 5) || (nombreDeColonnesEntree > 100)) {
+        if ((nombreDeColonnesEntree < 5) || (nombreDeColonnesEntree > 100))
+        {
             JOptionPane.showMessageDialog(this.fenetreParametres, "Erreur: le nombre de colonnes entré est invalide!", "Attention!", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
-        if ((nombreDeLignesEntree < 5) || (nombreDeLignesEntree > 100)) {
+        if ((nombreDeLignesEntree < 5) || (nombreDeLignesEntree > 100))
+        {
             JOptionPane.showMessageDialog(this.fenetreParametres, "Erreur: le nombre de lignes entré est invalide!", "Attention!", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
-        if ((nombreDeBombeEntree < 5) || (nombreDeBombeEntree > 100)) {
+        if ((nombreDeBombeEntree < 5) || (nombreDeBombeEntree > 100))
+        {
             JOptionPane.showMessageDialog(this.fenetreParametres, "Erreur: le nombre de bombes entré est invalide!", "Attention!", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
-        if (nombreDeBombeEntree > ((nombreDeColonnesEntree * nombreDeLignesEntree) / 2)) {
+        if (nombreDeBombeEntree > ((nombreDeColonnesEntree * nombreDeLignesEntree) / 2))
+        {
             JOptionPane.showMessageDialog(this.fenetreParametres, "Attention: le nombre de bombes entré est supérieur  à (nbCol*nbLig)/2!", "Attention!", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -125,7 +178,9 @@ public class IHMFenetreParametresPartieSWING implements Runnable, ActionListener
 
     }
 
-    public boolean isTousLesDonnesSontEntrees() {
+    // Getters:
+    public boolean isTousLesDonnesSontEntrees()
+    {
         return tousLesDonnesSontEntrees;
     }
 

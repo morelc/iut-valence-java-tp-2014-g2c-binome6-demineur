@@ -4,8 +4,9 @@ import iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM.IHMCreerParametresParti
 import javax.swing.SwingUtilities;
 
 /**
- * Classe contenant les paramètres de la partie. Elle permet de créer (en
- * IHM-SWING) les paramètres d'une partie.
+ * Classe contenant les paramètres de la partie.
+ * Elle implémente IHMCreerParemetresPartie. Elle permet de lancer la JFrame
+ * d'accueil du jeu et au besoin la JFrame d'entrée des paramètres.
  *
  * @author BEGOT William <william.begot@iut-valence.fr>
  * @author MOREL Charles <charles.morel@iut-valence.fr>
@@ -13,7 +14,7 @@ import javax.swing.SwingUtilities;
  */
 public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie {
 
-    // Définition des variables
+    // Définition des attributs
     /**
      * Variable définissant le nombre de bombes dans le plateau.
      */
@@ -50,15 +51,17 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie {
     private IHMFenetreParametresPartieSWING fenetreParametresPartie;
 
     /**
-     * Fenetre d'accueil du jeu.
+     * Fenêtre d'accueil du jeu.
      */
     private IHMAccueilJeu fenetreAccueil;
 
+    // Définition du constructeur
     /**
      * Définition du statut par défaut de la partie avec plateau lors de sa
      * construction.
      */
-    public IHMCreerParametresPartieSWING() {
+    public IHMCreerParametresPartieSWING()
+    {
         this.nombreBombesPlateau = NOMBRE_BOMBES_PLATEAU_DEFAULT;
         this.nombreColonnesPlateau = NOMBRE_COLONNES_PLATEAU_DEFAULT;
         this.nombreLignesPlateau = NOMBRE_LIGNES_PLATEAU_DEFAULT;
@@ -66,33 +69,41 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie {
         this.fenetreAccueil = new IHMAccueilJeu();
     }
 
-    // Méthodes utilisables hors-classe:
+    // Méthodes utilisables hors:
     /**
-     * Méthode de paramétrage de la partie (garder les paramètres par défaut ou
-     * les modifier).
+     * Elle permet de lancer une interface SWING d'accueil pour choisir
+     * d'utiliser ou non les paramètres par défaut. Dans le cas où les
+     * paramètres personnalisés sont utilisés, il lance une seconde JFrame pour
+     * les entrer.
+     *
      */
     @Override
-    public void parametrerPartie() {
+    public void parametrerPartie()
+    {
         SwingUtilities.invokeLater(this.fenetreAccueil);
-        while (!this.fenetreAccueil.isFenetreFermee()) {
+        while (!this.fenetreAccueil.isFenetreFermee())
+        {
             System.out.print("");
         }
-        if (!this.fenetreAccueil.isUtiliserLesParametresParDefaut()) {
+        if (!this.fenetreAccueil.isUtiliserLesParametresParDefaut())
+        {
             SwingUtilities.invokeLater(this.fenetreParametresPartie);
-            while (!this.fenetreParametresPartie.isTousLesDonnesSontEntrees()) {
+            while (!this.fenetreParametresPartie.isTousLesDonnesSontEntrees())
+            {
                 System.out.print("");
             }
         }
     }
 
-    // Getters
+    // Getters et setters:
     /**
      * Obtenir le nombre de bombes à positionner sur le plateau.
      *
      * @return le nombreBombesPlateau
      */
     @Override
-    public int getNombreBombesPlateau() {
+    public int getNombreBombesPlateau()
+    {
         return nombreBombesPlateau;
     }
 
@@ -102,7 +113,8 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie {
      * @return le nombreColonnesPlateau
      */
     @Override
-    public int getNombreColonnesPlateau() {
+    public int getNombreColonnesPlateau()
+    {
         return nombreColonnesPlateau;
     }
 
@@ -112,7 +124,8 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie {
      * @return le nombreLignesPlateau
      */
     @Override
-    public int getNombreLignesPlateau() {
+    public int getNombreLignesPlateau()
+    {
         return nombreLignesPlateau;
     }
 
@@ -121,7 +134,8 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie {
      *
      * @param nombreBombesPlateau le nouveau nombre de bombes
      */
-    public void setNombreBombesPlateau(int nombreBombesPlateau) {
+    public void setNombreBombesPlateau(int nombreBombesPlateau)
+    {
         this.nombreBombesPlateau = nombreBombesPlateau;
     }
 
@@ -130,7 +144,8 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie {
      *
      * @param nombreColonnesPlateau le nouveau nombre de colonnes
      */
-    public void setNombreColonnesPlateau(int nombreColonnesPlateau) {
+    public void setNombreColonnesPlateau(int nombreColonnesPlateau)
+    {
         this.nombreColonnesPlateau = nombreColonnesPlateau;
     }
 
@@ -139,7 +154,9 @@ public class IHMCreerParametresPartieSWING implements IHMCreerParametresPartie {
      *
      * @param nombreLignesPlateau le nouveau nombre de lignes.
      */
-    public void setNombreLignesPlateau(int nombreLignesPlateau) {
+    public void setNombreLignesPlateau(int nombreLignesPlateau)
+    {
         this.nombreLignesPlateau = nombreLignesPlateau;
     }
+
 }

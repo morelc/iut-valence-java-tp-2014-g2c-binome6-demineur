@@ -11,8 +11,7 @@ import iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutPartie;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 1.0
  */
-public class Plateau
-{
+public class Plateau {
 
     // Définition des varaibles
     /**
@@ -37,7 +36,7 @@ public class Plateau
      * Variable définissant le nombre de colonnes du plateau.
      */
     private final int nombreColonnesPlateau;
-    
+
     /**
      * Variable définissant le moment exacte où le jeu a débuté.
      */
@@ -59,14 +58,15 @@ public class Plateau
      * Constructeur du plateau.
      *
      * @param nombreDeColonnesDuPlateau nombre de colonnes qui composent le
-     * plateau
-     * @param nombreDeLignesDuPlateau nombre de lignes qui composent le plateau
-     * @param nombreDeBombesDuPlateau nombre de mines cachées dans le plateau
+     *                                  plateau
+     * @param nombreDeLignesDuPlateau   nombre de lignes qui composent le
+     *                                  plateau
+     * @param nombreDeBombesDuPlateau   nombre de mines cachées dans le plateau
      */
     public Plateau(int nombreDeColonnesDuPlateau, int nombreDeLignesDuPlateau, int nombreDeBombesDuPlateau)
     {
 
-        // Définition des variables du plateau
+        // Définition des attributs du plateau
         this.nombreBombesPlateau = nombreDeBombesDuPlateau;
         this.nombreColonnesPlateau = nombreDeColonnesDuPlateau;
         this.nombreLignesPlateau = nombreDeLignesDuPlateau;
@@ -219,6 +219,38 @@ public class Plateau
     }
 
     /**
+     * Permet de retourner le plateau.
+     *
+     * @return le plateau composé d'un tableau à double entrée de cases.
+     */
+    public Case[][] getPlateau()
+    {
+        return plateau;
+    }
+
+    /**
+     * Permet de retourner l'heure du début du jeu.
+     *
+     * @return l'heure du début du jeu (date en millièmes de secondes depuis
+     *         1970!)
+     */
+    public long getHeureDeDebutDuJeu()
+    {
+        return heureDeDebutDuJeu;
+    }
+
+    /**
+     * Permet de retourner le nombre de bombes présentes sur le plateau.
+     *
+     * @return le nombre de bombes sur le plateau.
+     *
+     */
+    public int getNombreBombesPlateau()
+    {
+        return nombreBombesPlateau;
+    }
+
+    /**
      * Obtention du nombre de lignes du plateau.
      *
      * @return le nombre de lignes du plateau
@@ -228,14 +260,15 @@ public class Plateau
         return nombreLignesPlateau;
     }
 
+
     // Méthode d'opération demandée par le joueur sur le plateau
     /**
      * Traitement récursif de l'affichage des cases sans mine adjacente.
      *
      * @param numColonneCaseATraiter la colonne de la case où appliquer le
-     * changement
-     * @param numLigneCaseATraiter la ligne de la case où appliquer le
-     * changement
+     *                               changement
+     * @param numLigneCaseATraiter   la ligne de la case où appliquer le
+     *                               changement
      */
     public void traitementRecursifCasesSansMineAdjacentesPlateau(int numColonneCaseATraiter, int numLigneCaseATraiter)
     {
@@ -319,7 +352,10 @@ public class Plateau
     }
 
     /**
-     * Vérifie si la partie est terminée ou non.
+     * Met à jour le statut d'une partie.
+     *
+     * Elle change StatutPartie: qu'elle soit en cours ou terminée
+     * (gagnée/perdue)
      */
     public void mettreAJourStatutPartie()
     {
@@ -398,19 +434,5 @@ public class Plateau
         return plateauEnAsciiArt;
     }
 
-    
-    // Getters:
-    
-    public Case[][] getPlateau() {
-        return plateau;
-    }
-
-    public long getHeureDeDebutDuJeu() {
-        return heureDeDebutDuJeu;
-    }
-
-    public int getNombreBombesPlateau() {
-        return nombreBombesPlateau;
-    }
 
 }

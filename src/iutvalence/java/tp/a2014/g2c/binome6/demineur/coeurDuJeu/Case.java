@@ -10,23 +10,24 @@ import static iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes.StatutCase.*
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 1.0
  */
-public class Case
-{
+public class Case {
 
-    // Définition des varaibles:
+    // Définition des attributs:
     /**
      * Présence d'une bombe.
      */
     private boolean aUneBombe;
+
     /**
      * Nombre de bombes adjacents à la case.
-     * <p/>
+     *
      * Ce nombre est compris entre 0 et 8
      */
     private int aNBombesAdjacentes;
+
     /**
      * Etat de la case.
-     * <p/>
+     *
      * La case peut etre sous 3 états: MARQUEE, MASQUEE ou DECOUVERTE
      */
     private StatutCase statutCase;
@@ -36,10 +37,12 @@ public class Case
      * Valeur par défaut de la présence d'une bombe.
      */
     private static final boolean AUNEBOMBE_DEFAUT = false;
+
     /**
      * Nombre de bombes adjacents d'une case.
      */
     private static final int ANBOMBESADJACENTES_DEFAUT = 0;
+
     /**
      * Etat par défaut d'une case.
      */
@@ -70,8 +73,9 @@ public class Case
     /**
      * Obtenir le statut de la bombe de la case en cours.
      *
-     * @return statut de la bopbe (true <=> a une bombe / false <=> n'a pas de
-     * bombe)
+     * @return statut de la bombe
+     *         (true <=> a une bombe / false <=> n'a pas de
+     *         bombe)
      */
     public boolean getaUneBombe()
     {
@@ -93,7 +97,7 @@ public class Case
      * Modifier le statut de la case en cours de traitement.
      *
      * @param statutCase le nouveau statut de la case [MARQUEE, MASQUEE,
-     * DECOUVERTE]
+     *                   DECOUVERTE]
      */
     public void setStatutCase(StatutCase statutCase)
     {
@@ -134,7 +138,7 @@ public class Case
      * Méthode de test de case pour dé-couverture récursive.
      *
      * @return true si la case n'a aucune bombe adjacente et qu'elle n'est pas
-     * découverte
+     *         découverte
      */
     public boolean bombesAdjacentesNulEtCaseCouverte()
     {

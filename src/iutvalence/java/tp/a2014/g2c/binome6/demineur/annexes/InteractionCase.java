@@ -7,8 +7,7 @@ package iutvalence.java.tp.a2014.g2c.binome6.demineur.annexes;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 1.0
  */
-public enum InteractionCase
-{
+public enum InteractionCase {
 
     MARQUER,
     ENLEVER_MARQUAGE,

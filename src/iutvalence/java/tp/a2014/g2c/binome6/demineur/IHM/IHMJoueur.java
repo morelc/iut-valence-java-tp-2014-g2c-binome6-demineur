@@ -1,12 +1,12 @@
 package iutvalence.java.tp.a2014.g2c.binome6.demineur.IHM;
 
 import iutvalence.java.tp.a2014.g2c.binome6.demineur.coeurDuJeu.Plateau;
+
 /**
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public interface IHMJoueur
-{
+public interface IHMJoueur {
 
     // Méthode d'interaction
     /**

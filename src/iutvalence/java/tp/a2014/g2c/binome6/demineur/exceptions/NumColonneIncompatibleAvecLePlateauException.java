@@ -7,8 +7,7 @@ package iutvalence.java.tp.a2014.g2c.binome6.demineur.exceptions;
  *
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  */
-public class NumColonneIncompatibleAvecLePlateauException extends Exception
-{
+public class NumColonneIncompatibleAvecLePlateauException extends Exception {
 
     public NumColonneIncompatibleAvecLePlateauException()
     {

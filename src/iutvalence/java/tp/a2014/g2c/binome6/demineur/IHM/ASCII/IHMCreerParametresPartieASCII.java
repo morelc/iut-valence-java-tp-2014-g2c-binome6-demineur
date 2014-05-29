@@ -14,10 +14,9 @@ import java.util.Scanner;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 1.0
  */
-public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
-{
+public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie {
 
-    // Définition des variables
+    // Définition des attributs
     /**
      * Variable définissant le nombre de bombes dans le plateau.
      */
@@ -37,6 +36,7 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
      * Scanner d'entrées du joueur.
      */
     Scanner scanner = new Scanner(System.in);
+
     /**
      * Variable définissant le nombre de bombes dans le plateau par défaut.
      */
@@ -238,4 +238,5 @@ public class IHMCreerParametresPartieASCII implements IHMCreerParametresPartie
     {
         return nombreLignesPlateau;
     }
+
 }

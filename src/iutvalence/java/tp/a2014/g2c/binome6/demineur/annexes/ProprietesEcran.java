@@ -13,7 +13,8 @@ public class ProprietesEcran {
      *
      * @return la largeur maximale d'une fenêtre
      */
-    public static int ObtenirLaLargeurMaximaleDeLaFenetre() {
+    public static int ObtenirLaLargeurMaximaleDeLaFenetre()
+    {
         return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
     }
 
@@ -22,7 +23,8 @@ public class ProprietesEcran {
      *
      * @return la hauteur maximale d'une fenêtre
      */
-    public static int ObtenirLaHauteurMaximaleDeLaFenetre() {
+    public static int ObtenirLaHauteurMaximaleDeLaFenetre()
+    {
         return java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height - 150;
     }
 
@@ -33,11 +35,14 @@ public class ProprietesEcran {
      * @param largeurDeLaFenetre: la largeur de la fenêtre.
      * @return point X optimal d'ancrage de la fenêtre.
      */
-    public static int ObtenirLlePointXDAncrageOptimaleDeLaFenetre(int largeurDeLaFenetre) {
+    public static int ObtenirLlePointXDAncrageOptimaleDeLaFenetre(int largeurDeLaFenetre)
+    {
         int coordonneeX = (ObtenirLaLargeurMaximaleDeLaFenetre() - largeurDeLaFenetre) / 2;
-        if (coordonneeX<0)
+        if (coordonneeX < 0)
+        {
             return 0;
-        return coordonneeX; 
+        }
+        return coordonneeX;
     }
 
     /**
@@ -47,10 +52,14 @@ public class ProprietesEcran {
      * @param hauteurDeLaFenetre: la largeur de la fenêtre.
      * @return point X optimal d'ancrage de la fenêtre.
      */
-    public static int ObtenirLlePointYDAncrageOptimaleDeLaFenetre(int hauteurDeLaFenetre) {
+    public static int ObtenirLlePointYDAncrageOptimaleDeLaFenetre(int hauteurDeLaFenetre)
+    {
         int coordonneeY = ((ObtenirLaHauteurMaximaleDeLaFenetre() + 50 - hauteurDeLaFenetre) / 2) - 75;
-        if (coordonneeY<0)
+        if (coordonneeY < 0)
+        {
             return 0;
-        return coordonneeY; 
+        }
+        return coordonneeY;
     }
+
 }

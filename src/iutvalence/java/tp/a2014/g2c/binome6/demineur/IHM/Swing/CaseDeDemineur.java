@@ -8,65 +8,75 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 /**
- * Classe représentant un bouton correspondant à une case de démineur.
+ * Classe représentant un bouton correspondant à une case du plateau de
+ * démineur.
  *
  * @author MOREL Charles
  */
 public class CaseDeDemineur extends JButton {
-
-    private final int ligneDuBouton;
-
-    private final int colonneDuBouton;
-
+    // Définition des attributs:
+    /**
+     * Référence vers la case de la grille du plateau de démineur correspondante
+     * au bouton.
+     */
     private final Case refVerscaseCorrespondante;
 
-    public CaseDeDemineur(int ligneDuBouton, int colonneDuBouton, Case caseCorrespondante) {
+    // Définition du constructeur:
+    /**
+     * Constructeur de la classe.
+     *
+     * @param caseCorrespondante case de la grille du plateau de démineur
+     *                           correspondante
+     *                           au bouton.
+     */
+    public CaseDeDemineur(Case caseCorrespondante)
+    {
+        // Initialisation des attributs
         this.refVerscaseCorrespondante = caseCorrespondante;
-        this.ligneDuBouton = ligneDuBouton;
-        this.colonneDuBouton = colonneDuBouton;
+        // Initialisation des paramêtres d'une case par défaut
         this.setBackground(Color.BLUE);
         this.setVerticalAlignment(CENTER);
         this.setHorizontalAlignment(CENTER);
     }
 
-    public void mettreAJourLeBouton() {
-        if (this.refVerscaseCorrespondante.getStatutCase() == StatutCase.DECOUVERTE) {
-
+    //Définition des méthodes:
+    /**
+     * Méthode de mise à jour des propriétés du JButton.
+     * Cette méthode applique un style spécifique au bouton en fonction de son
+     * statut.
+     */
+    public void mettreAJourLeBouton()
+    {
+        if (this.refVerscaseCorrespondante.getStatutCase() == StatutCase.DECOUVERTE)
+        {
             this.setEnabled(false);
-            if (this.refVerscaseCorrespondante.getaUneBombe()) {
+            if (this.refVerscaseCorrespondante.getaUneBombe())
+            {
                 this.setBackground(Color.RED);
                 JLabel contenuBouton = new JLabel("");
                 this.setIcon(new ImageIcon("./src/iutvalence/java/tp/a2014/g2c/binome6/demineur/IHM/Swing/bombeExplosee.png"));
                 this.add(contenuBouton);
-            } else {
+            }
+            else
+            {
                 this.setIcon(null);
                 this.setOpaque(false);
                 this.setBackground(null);
-                if (this.refVerscaseCorrespondante.getaNBombesAdjacentes() != 0) {
+                if (this.refVerscaseCorrespondante.getaNBombesAdjacentes() != 0)
+                {
                     this.setText(String.valueOf(this.refVerscaseCorrespondante.getaNBombesAdjacentes()));
                 }
-                
-                
             }
-            
-            
         }
 
-        if (this.refVerscaseCorrespondante.getStatutCase() == StatutCase.MARQUEE) {
+        if (this.refVerscaseCorrespondante.getStatutCase() == StatutCase.MARQUEE)
+        {
             this.setIcon(new ImageIcon("./src/iutvalence/java/tp/a2014/g2c/binome6/demineur/IHM/Swing/drapeau_case_marquee.png"));
         }
-
-        if (this.refVerscaseCorrespondante.getStatutCase() == StatutCase.MASQUEE) {
+        if (this.refVerscaseCorrespondante.getStatutCase() == StatutCase.MASQUEE)
+        {
             this.setIcon(null);
         }
-    }
-
-    public int getLigneDuBouton() {
-        return ligneDuBouton;
-    }
-
-    public int getColonneDuBouton() {
-        return colonneDuBouton;
     }
 
 }

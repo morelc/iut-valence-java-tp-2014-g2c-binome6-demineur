@@ -19,9 +19,8 @@ import java.util.Scanner;
  * @author MOREL Charles <charles.morel@iut-valence.fr>
  * @version 1.0
  */
-public class IHMJoueurASCII implements IHMJoueur
-{
-    // Définition des variables:
+public class IHMJoueurASCII implements IHMJoueur {
+    // Définition des attributs:
 
     /**
      * Scanner d'entrées du joueur.
@@ -181,7 +180,7 @@ public class IHMJoueurASCII implements IHMJoueur
      * dernière action entrée avec la méthode entrerUneAction().
      *
      * @param plateauAModifier est le plateau sur laquelle on interagis avec la
-     * case
+     *                         case
      */
     private void appliquerActionSurCase(Plateau plateauAModifier)
     {
