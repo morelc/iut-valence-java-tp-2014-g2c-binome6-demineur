@@ -19,10 +19,13 @@ class IHMJeuDemineurSWING implements Runnable {
     private final Plateau refVersPlateau;
 
     private JFrame fenetrePrincipaleDuJeu;
+    private BoutonRadioSelectionAction boutonAction;
 
     public IHMJeuDemineurSWING(IHMJoueurSWING refVersIHMJoueurSWING, Plateau refVersPlateau) {
         this.refVersIHMJoueurSWING = refVersIHMJoueurSWING;
         this.refVersPlateau = refVersPlateau;
+                this.boutonAction = new BoutonRadioSelectionAction(this.refVersPlateau);
+
     }
 
     @Override
@@ -43,9 +46,8 @@ class IHMJeuDemineurSWING implements Runnable {
         this.fenetrePrincipaleDuJeu.setJMenuBar(new BarreDeMenuFenetre(this));
 
         // Contenu de la JFrame
-        BoutonRadioSelectionAction boutonAction = new BoutonRadioSelectionAction();
-        GrilleDeDemineur grille = new GrilleDeDemineur(this.refVersIHMJoueurSWING, this.refVersPlateau, boutonAction);
-        JSplitPane splitGrilleRadioAction = new JSplitPane(JSplitPane.VERTICAL_SPLIT, grille, boutonAction);
+        GrilleDeDemineur grille = new GrilleDeDemineur(this.refVersIHMJoueurSWING, this.refVersPlateau, this.boutonAction);
+        JSplitPane splitGrilleRadioAction = new JSplitPane(JSplitPane.VERTICAL_SPLIT, grille, this.boutonAction);
         splitGrilleRadioAction.setEnabled(false);
         splitGrilleRadioAction.setBorder(null);
         splitGrilleRadioAction.setDividerSize(0);
@@ -56,8 +58,12 @@ class IHMJeuDemineurSWING implements Runnable {
         this.fenetrePrincipaleDuJeu.setVisible(true);
     }
 
+    // Getters
     public JFrame getFenetrePrincipaleDuJeu() {
         return fenetrePrincipaleDuJeu;
     }
 
+    public BoutonRadioSelectionAction getBoutonAction() {
+        return boutonAction;
+    }
 }

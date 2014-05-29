@@ -107,7 +107,7 @@ public class IHMJoueurSWING implements IHMJoueur {
         SwingUtilities.invokeLater(this.ecranDeJeu);
         while (plateauAModifier.getStatutPartie() == StatutPartie.ENCOURS)
         {
-            System.out.print("");
+            this.ecranDeJeu.getBoutonAction().mettreAJourLeTimer();
         }
         System.out.println("");
     }

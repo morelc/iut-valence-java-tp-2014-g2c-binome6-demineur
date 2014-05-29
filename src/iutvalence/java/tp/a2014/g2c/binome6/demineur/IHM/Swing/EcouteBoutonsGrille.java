@@ -29,9 +29,9 @@ class EcouteBoutonsGrille implements ActionListener {
     private final CaseDeDemineur[][] refVersBoutonsDeLaGrille;
 
     private final Plateau refVersPlateau;
-    
+
     private final GrilleDeDemineur refVersGrilleDuDemineur;
-    
+
     private final BoutonRadioSelectionAction refVersActionSelectionnee;
 
     EcouteBoutonsGrille(GrilleDeDemineur refVersGrilleDeDemineur) {
@@ -46,32 +46,27 @@ class EcouteBoutonsGrille implements ActionListener {
     public void actionPerformed(ActionEvent evenement) {
 
         JButton boutonSelectionne = (JButton) evenement.getSource();
-        
-        
+
         for (int colonneCaseATraiter = 0; colonneCaseATraiter < this.refVersPlateau.getNombreColonnesPlateau(); colonneCaseATraiter++) {
-            for(int ligneCaseATraiter = 0; ligneCaseATraiter < this.refVersPlateau.getNombreLignesPlateau(); ligneCaseATraiter++ )
-            {
-                if (boutonSelectionne == this.refVersBoutonsDeLaGrille[colonneCaseATraiter][ligneCaseATraiter])
-                {
-                    if (!this.refVersActionSelectionnee.islActionSelectionneeEstLeDeminage())
-                    {
-                        if(this.refVersPlateau.getPlateau()[colonneCaseATraiter][ligneCaseATraiter].getStatutCase()==StatutCase.MARQUEE)
+            for (int ligneCaseATraiter = 0; ligneCaseATraiter < this.refVersPlateau.getNombreLignesPlateau(); ligneCaseATraiter++) {
+                if (boutonSelectionne == this.refVersBoutonsDeLaGrille[colonneCaseATraiter][ligneCaseATraiter]) {
+                    if (!this.refVersActionSelectionnee.islActionSelectionneeEstLeDeminage()) {
+                        if (this.refVersPlateau.getPlateau()[colonneCaseATraiter][ligneCaseATraiter].getStatutCase() == StatutCase.MARQUEE) {
                             this.refVersIHMJoueurSWING.appliquerActionSurCase(this.refVersPlateau, colonneCaseATraiter, ligneCaseATraiter, InteractionCase.ENLEVER_MARQUAGE);
-                        else
+                        } else {
                             this.refVersIHMJoueurSWING.appliquerActionSurCase(this.refVersPlateau, colonneCaseATraiter, ligneCaseATraiter, InteractionCase.MARQUER);
-                    }
-                    else
-                    {
+                        }
+                        this.refVersActionSelectionnee.mettreAJourCompteurMineRestantes();
+                    } else {
                         this.refVersIHMJoueurSWING.appliquerActionSurCase(this.refVersPlateau, colonneCaseATraiter, ligneCaseATraiter, InteractionCase.DEMINER);
                     }
-                    
+
                     this.refVersGrilleDuDemineur.MettreAJourAffichageGrille();
-                    if(this.refVersIHMJoueurSWING.verifierStatutPartie(this.refVersPlateau))
-                    {
+                    if (this.refVersIHMJoueurSWING.verifierStatutPartie(this.refVersPlateau)) {
                         this.refVersGrilleDuDemineur.MettreAJourAffichageGrille();
                         finDuJeu();
                     }
-                        
+
                 }
             }
 
@@ -83,15 +78,12 @@ class EcouteBoutonsGrille implements ActionListener {
     private void finDuJeu() {
         JLabel messageDeFinDeJeu = new JLabel("");
         UIManager managerUI = new UIManager();
-        if (this.refVersPlateau.getStatutPartie()==StatutPartie.ESTGAGNEE)
-        {
-                        managerUI.put("OptionPane.background", Color.WHITE);
+        if (this.refVersPlateau.getStatutPartie() == StatutPartie.ESTGAGNEE) {
+            managerUI.put("OptionPane.background", Color.WHITE);
             managerUI.put("Panel.background", Color.WHITE);
             messageDeFinDeJeu.setIcon(new ImageIcon("./src/iutvalence/java/tp/a2014/g2c/binome6/demineur/IHM/Swing/partie_gagnee.png"));
-           messageDeFinDeJeu.setText("Félicatation! Vous venez de gagné en "+ new SimpleDateFormat("mm:ss", Locale.FRANCE).format(new Date(System.currentTimeMillis() - this.refVersPlateau.getHeureDeDebutDuJeu())));
-        }
-        else
-        {
+            messageDeFinDeJeu.setText("Félicatation! Vous venez de gagné en " + new SimpleDateFormat("mm:ss", Locale.FRANCE).format(new Date(System.currentTimeMillis() - this.refVersPlateau.getHeureDeDebutDuJeu())));
+        } else {
             messageDeFinDeJeu.setIcon(new ImageIcon("./src/iutvalence/java/tp/a2014/g2c/binome6/demineur/IHM/Swing/partie_perdue.png"));
             managerUI.put("OptionPane.background", Color.BLACK);
             managerUI.put("Panel.background", Color.BLACK);

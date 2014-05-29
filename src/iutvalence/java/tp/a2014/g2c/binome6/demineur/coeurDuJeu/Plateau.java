@@ -409,4 +409,8 @@ public class Plateau
         return heureDeDebutDuJeu;
     }
 
+    public int getNombreBombesPlateau() {
+        return nombreBombesPlateau;
+    }
+
 }
